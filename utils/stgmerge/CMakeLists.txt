@@ -2,6 +2,7 @@ add_executable(stgmerge stgmerge.cxx)
 
 target_link_libraries(stgmerge
 	SimGearScene
+    vsg::vsg
 	${OPENSCENEGRAPH_LIBRARIES}
 	${OPENGL_LIBRARIES}
 )

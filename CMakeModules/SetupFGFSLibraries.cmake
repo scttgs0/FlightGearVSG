@@ -31,6 +31,7 @@ function(setup_fgfs_libraries target)
         SimGearCore
         SimGearScene
         Boost::boost
+        vsg::vsg
         ${EVENT_INPUT_LIBRARIES}
         ${HLA_LIBRARIES}
         ${OPENGL_LIBRARIES}

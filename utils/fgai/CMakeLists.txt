@@ -19,6 +19,7 @@ add_executable(fgai
 
 target_link_libraries(fgai
   SimGearCore SimGearScene
+  vsg::vsg
   ${OPENSCENEGRAPH_LIBRARIES}
   ${OPENGL_LIBRARIES}
   ${RTI_LDFLAGS}
