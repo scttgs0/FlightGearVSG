@@ -1,0 +1,653 @@
+/*
+ * SPDX-FileName: new_gui.cxx
+ * SPDX-FileComment: implementation of XML-configurable GUI support.
+ * SPDX-FileCopyrightText: 2002 David Megginson
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+/**
+ * @file
+ * @brief implementation of XML-configurable GUI support.
+ */
+
+#include <config.h>
+
+#include "new_gui.hxx"
+
+#include <cstring>
+#include <string>
+
+#include <sys/types.h>
+
+#include <simgear/compiler.h>
+#include <simgear/debug/ErrorReportingCallback.hxx>
+#include <simgear/misc/sg_dir.hxx>
+#include <simgear/props/props_io.hxx>
+#include <simgear/structure/exception.hxx>
+
+#include <Add-ons/AddonManager.hxx>
+#include <Main/fg_props.hxx>
+#include <Main/sentryIntegration.hxx>
+#include <Scripting/NasalSys.hxx>
+
+#if defined(SG_MAC)
+#include "FGCocoaMenuBar.hxx"
+#endif
+
+#if defined(SG_WINDOWS)
+#include "FGWindowsMenuBar.hxx"
+#endif
+
+#include "CanvasWidget.hxx"
+#include "FGNasalMenuBar.hxx"
+#include "FGPUICompatDialog.hxx"
+#include "PUICompatObject.hxx"
+
+#include "FGColor.hxx"
+
+#include "Highlight.hxx"
+
+// ignore the word Navaid here, it's a DataCache
+#include <Navaids/NavDataCache.hxx>
+
+using std::string;
+
+NewGUI::DialogMetadata::DialogMetadata(const SGPath& xmlFilePath,
+                                       const std::string& translationDomain)
+    : xmlFilePath(xmlFilePath),
+      translationDomain(translationDomain)
+{ }
+
+////////////////////////////////////////////////////////////////////////
+// Implementation of NewGUI.
+////////////////////////////////////////////////////////////////////////
+
+
+NewGUI::NewGUI()
+{
+}
+
+NewGUI::~NewGUI ()
+{
+    for (_itt_t it = _colors.begin(); it != _colors.end(); ++it)
+        delete it->second;
+}
+
+// Recursively finds all nodes called <leaf> and appends the string values of
+// these nodes to <out>.
+//
+static void findAllLeafValues(SGPropertyNode* node, const std::string& leaf, std::vector<std::string>& out)
+{
+    string name = node->getNameString();
+    if (name == leaf) {
+        out.push_back(node->getStringValue());
+    }
+    for (int i=0; i<node->nChildren(); ++i) {
+        findAllLeafValues(node->getChild(i), leaf, out);
+    }
+}
+
+
+/* Registers menu-dialog associations with Highlight::add_menu_dialog(). */
+static void scanMenus()
+{
+    /* We find all nodes called 'dialog-name' in
+    sim/menubar/default/menu[]/item[]. */
+    SGPropertyNode* menubar = globals->get_props()->getNode("sim/menubar/default");
+    assert(menubar);
+    auto highlight = globals->get_subsystem<Highlight>();
+    if (!highlight) {
+        return;
+    }
+    for (int menu_p=0; menu_p<menubar->nChildren(); ++menu_p) {
+        SGPropertyNode* menu = menubar->getChild(menu_p);
+        if (menu->getNameString() != "menu") continue;
+        for (int item_p=0; item_p<menu->nChildren(); ++item_p) {
+            SGPropertyNode* item = menu->getChild(item_p);
+            if (item->getNameString() != "item") continue;
+            std::vector<std::string> dialog_names;
+            findAllLeafValues(item, "dialog-name", dialog_names);
+            for (auto dialog_name: dialog_names) {
+                highlight->addMenuDialog(HighlightMenu(menu->getIndex(), item->getIndex()), dialog_name);
+            }
+        }
+    }
+}
+
+void
+NewGUI::init ()
+{
+    createMenuBarImplementation();
+    fgTie("/sim/menubar/visibility", this,
+          &NewGUI::getMenuBarVisible, &NewGUI::setMenuBarVisible);
+
+    fgTie("/sim/menubar/overlap-hide", this,
+          &NewGUI::getMenuBarOverlapHide, &NewGUI::setMenuBarOverlapHide);
+
+    setStyle();
+    SGPath p(globals->get_fg_root(), "gui/dialogs");
+    readDir(p, "core");
+
+    if (fgGetBool("/sim/gui/startup") == false) {
+        SGPath aircraftDialogDir(fgGetString("/sim/aircraft-dir"), "gui/dialogs");
+        if (aircraftDialogDir.exists()) {
+            readDir(aircraftDialogDir, "current-aircraft");
+        }
+
+        // Read XML dialogs made available by registered add-ons
+        const auto& addonManager = flightgear::addons::AddonManager::instance();
+        if (addonManager) {
+            for (const auto& addon : addonManager->registeredAddons()) {
+                SGPath addonDialogDir = addon->getBasePath() / "gui/dialogs";
+
+                if (addonDialogDir.exists()) {
+                    readDir(addonDialogDir, "addons/" + addon->getId());
+                }
+            }
+        }
+    }
+
+    if (_menubar) {
+        // Fix for http://code.google.com/p/flightgear-bugs/issues/detail?id=947
+        fgGetNode("sim/menubar")->setAttribute(SGPropertyNode::PRESERVE, true);
+        _menubar->init();
+        scanMenus();
+    }
+}
+
+void
+NewGUI::shutdown()
+{
+    _active_dialogs.clear();
+    _active_dialog.clear();
+
+    fgUntie("/sim/menubar/visibility");
+    fgUntie("/sim/menubar/overlap-hide");
+    _menubar.reset();
+    _dialog_props.clear();
+}
+
+void
+NewGUI::reinit ()
+{
+    reset(true);
+    fgSetBool("/sim/signals/reinit-gui", true);
+}
+
+void
+NewGUI::redraw ()
+{
+    reset(false);
+}
+
+void
+NewGUI::createMenuBarImplementation()
+{
+    if (!fgGetBool("/sim/menubar/enable", true)) {
+        SG_LOG(SG_GUI, SG_INFO, "Menubar is disabled");
+        return;
+    }
+
+#if defined(SG_MAC)
+    if (fgGetBool("/sim/menubar/native", true)) {
+        _menubar.reset(new FGCocoaMenuBar);
+    }
+#endif
+#if defined(SG_WINDOWS)
+	if (fgGetBool("/sim/menubar/native", false)) {
+        _menubar.reset(new FGWindowsMenuBar);
+    }
+#endif
+    if (!_menubar.get()) {
+        _menubar.reset(new FGNasalMenuBar);
+    }
+}
+
+void NewGUI::setDialogMetadata(const string& name, const SGPath& xmlFilepath,
+                               const string& domain)
+{
+    _dialog_metadata.erase(name);
+    _dialog_metadata.emplace(name, DialogMetadata(xmlFilepath, domain));
+}
+
+void
+NewGUI::reset (bool reload)
+{
+    DialogDict::iterator iter;
+    string_list openDialogs;
+    // close all open dialogs and remember them ...
+    for (iter = _active_dialogs.begin(); iter != _active_dialogs.end(); ++iter)
+        openDialogs.push_back(iter->first);
+
+    for (auto d : openDialogs)
+        closeDialog(d);
+
+    setStyle();
+
+    unbind();
+
+    if (reload) {
+        _dialog_props.clear();
+        _dialog_metadata.clear();
+        init();
+    } else {
+        createMenuBarImplementation();
+        if (_menubar) {
+            _menubar->init();
+        }
+    }
+
+    bind();
+
+    // open dialogs again
+    for (auto d : openDialogs)
+        showDialog(d);
+}
+
+void
+NewGUI::bind ()
+{
+}
+
+void
+NewGUI::unbind ()
+{
+}
+
+void NewGUI::postinit()
+{
+    auto nas = globals->get_subsystem<FGNasalSys>();
+    nasal::Context ctx;
+    nasal::Hash guiModule{nas->getModule("gui"), ctx};
+    nasal::Hash compatModule = guiModule.createHash("xml");
+
+    FGPUICompatDialog::setupGhost(compatModule);
+    PUICompatObject::setupGhost(compatModule);
+    CanvasWidget::setupGhost(compatModule);
+    FGNasalMenuBar::setupGhosts(compatModule);
+
+    if (_menubar) {
+        _menubar->postinit();
+    }
+}
+
+void
+NewGUI::update (double delta_time_sec)
+{
+    SG_UNUSED(delta_time_sec);
+    auto iter = _active_dialogs.begin();
+    for(/**/; iter != _active_dialogs.end(); iter++)
+        iter->second->update();
+}
+
+bool
+NewGUI::showDialog (const string &name)
+{
+    if (name.empty()) {
+        SG_LOG(SG_GENERAL, SG_ALERT, "showDialog: no dialog name provided");
+        return false;
+    }
+
+    // first, check if it's already shown
+    if (_active_dialogs.find(name) != _active_dialogs.end()){
+        _active_dialogs[name]->bringToFront();
+        return true;
+    }
+
+    // Check we know about the dialog by name
+    const auto metadataIt = _dialog_metadata.find(name);
+    if (metadataIt == _dialog_metadata.end()) {
+        simgear::reportFailure(simgear::LoadFailure::NotFound,
+                               simgear::ErrorCode::GUIDialog,
+                               "Metadata not found for dialog '" + name + "'");
+        return false;
+    }
+
+    // log dialog show/close except these noisy ones (screen_window & screen_display)
+    if (name.find("__screen_") != 0) {
+        flightgear::addSentryBreadcrumb("showing GUI dialog:" + name, "info");
+    }
+
+    try {
+        SGSharedPtr<FGPUICompatDialog> pcd = new FGPUICompatDialog(
+            getDialogProperties(name), metadataIt->second.translationDomain);
+        if (pcd->init()) {
+            _active_dialogs[name] = pcd; // establish ownership
+        } else {
+            return false;
+        }
+
+        fgSetString("/sim/gui/dialogs/current-dialog", name);
+
+        //    setActiveDialog(new FGPUIDialog(getDialogProperties(name)));
+        return true;
+    } catch (sg_exception& e) {
+        simgear::reportFailure(simgear::LoadFailure::Misconfigured, simgear::ErrorCode::GUIDialog, "Dialog failed to show:" + name + ":" + e.getFormattedMessage(), e.getLocation());
+        return false;
+    }
+}
+
+bool
+NewGUI::toggleDialog (const string &name)
+{
+    if (_active_dialogs.find(name) == _active_dialogs.end()) {
+        showDialog(name);
+        return true;
+    }
+    else {
+        closeDialog(name);
+        return false;
+    }
+}
+
+bool
+NewGUI::closeActiveDialog ()
+{
+    if (_active_dialog == 0)
+        return false;
+
+    // TODO support a request-close callback here, optionally
+    // many places in code assume this code-path does an
+    // immediate close, but for some UI paths it would be nice to
+    // allow some dialogs the chance to inervene
+
+    // Kill any entries in _active_dialogs...  Is there an STL
+    // algorithm to do (delete map entries by value, not key)?  I hate
+    // the STL :) -Andy
+    auto iter = _active_dialogs.begin();
+    for(/**/; iter != _active_dialogs.end(); iter++) {
+        if(iter->second == _active_dialog) {
+            _active_dialog->close();
+
+            _active_dialogs.erase(iter);
+            // iter is no longer valid
+            break;
+        }
+    }
+
+    _active_dialog = 0;
+    if (!_active_dialogs.empty()) {
+        fgSetString("/sim/gui/dialogs/current-dialog", _active_dialogs.begin()->second->getName());
+    }
+    return true;
+}
+
+bool
+NewGUI::closeDialog (const string& name)
+{
+    if(_active_dialogs.find(name) != _active_dialogs.end()) {
+        if (name.find("__screen_") != 0) {
+            flightgear::addSentryBreadcrumb("closing GUI dialog:" + name, "info");
+        }
+
+        if(_active_dialog == _active_dialogs[name])
+            _active_dialog.clear();
+
+        _active_dialogs.erase(name);
+        return true;
+    }
+    return false; // dialog wasn't open...
+}
+
+SGPropertyNode_ptr
+NewGUI::getDialogProperties (const string &name)
+{
+    const auto metadataIt = _dialog_metadata.find(name);
+
+    if (metadataIt == _dialog_metadata.end()) {
+      SG_LOG(SG_GENERAL, SG_ALERT, "Dialog '" << name << "' not defined");
+      return {};
+    }
+
+    NameDialogDict::iterator it = _dialog_props.find(name);
+    if (it == _dialog_props.end()) {
+      // load the XML
+      const SGPath path = metadataIt->second.xmlFilePath;
+      SGPropertyNode_ptr props = new SGPropertyNode;
+
+      try {
+        readProperties(path, props);
+      } catch (const sg_exception &) {
+        SG_LOG(SG_INPUT, SG_ALERT, "Error parsing dialog from " << path);
+        return {};
+      }
+
+      it = _dialog_props.insert(it, std::make_pair(name, props));
+    }
+
+    return it->second;
+}
+
+NewGUI::FGDialogRef
+NewGUI::getDialog(const string& name)
+{
+    if(_active_dialogs.find(name) != _active_dialogs.end())
+        return _active_dialogs[name];
+
+    SG_LOG(SG_GENERAL, SG_DEBUG, "dialog '" << name << "' missing");
+    return 0;
+}
+
+void
+NewGUI::setActiveDialog (FGDialog * dialog)
+{
+    if (dialog){
+        fgSetString("/sim/gui/dialogs/current-dialog", dialog->getName());
+    }
+    _active_dialog = dialog;
+}
+
+NewGUI::FGDialogRef
+NewGUI::getActiveDialog()
+{
+    return _active_dialog;
+}
+
+FGMenuBar *
+NewGUI::getMenuBar ()
+{
+    return _menubar.get();
+}
+
+bool
+NewGUI::getMenuBarVisible () const
+{
+    if (_menubar) {
+        return _menubar->isVisible();
+    }
+
+    return false;
+}
+
+void
+NewGUI::setMenuBarVisible (bool visible)
+{
+    if (_menubar) {
+        if (visible)
+            _menubar->show();
+        else
+            _menubar->hide();
+    }
+}
+
+bool
+NewGUI::getMenuBarOverlapHide() const
+{
+    return _menubar && _menubar->getHideIfOverlapsWindow();
+}
+
+void
+NewGUI::setMenuBarOverlapHide(bool hide)
+{
+    if (_menubar) {
+        _menubar->setHideIfOverlapsWindow(hide);
+    }
+}
+
+void
+NewGUI::newDialog (SGPropertyNode* props)
+{
+    string name = props->getStringValue("name", "");
+    if(name.empty()) {
+        SG_LOG(SG_GENERAL, SG_ALERT, "New dialog has no <name> property");
+        return;
+    }
+
+    if(_active_dialogs.find(name) == _active_dialogs.end()) {
+        _dialog_props[name] = props;
+        // Use a dummy XML file path, so we believe the dialog exists. The
+        // translation domain can be overridden from the 'props' argument.
+        setDialogMetadata(name, SGPath());
+    }
+}
+
+
+void
+NewGUI::readDir (const SGPath& path, const std::string& translationDomain)
+{
+    simgear::Dir dir(path);
+    if( !dir.exists() )
+    {
+      SG_LOG(SG_INPUT, SG_INFO, "directory does not exist: " << path);
+      return;
+    }
+
+    flightgear::NavDataCache* cache = flightgear::NavDataCache::instance();
+    flightgear::NavDataCache::Transaction txn(cache);
+    auto highlight = globals->get_subsystem<Highlight>();
+    for (SGPath xmlPath : dir.children(simgear::Dir::TYPE_FILE, ".xml")) {
+
+      SGPropertyNode_ptr props = new SGPropertyNode;
+      SGPropertyNode *nameprop = nullptr;
+      std::string name;
+
+      /* Always parse the dialog even if cache->isCachedFileModified() says
+      it is cached, so that we can register property-dialog associations with
+      Highlight::add_property_dialog(). */
+      try {
+        readProperties(xmlPath, props);
+      } catch (const sg_exception &) {
+        SG_LOG(SG_INPUT, SG_ALERT, "Error parsing dialog " << xmlPath);
+        props.reset();
+      }
+      if (props) {
+        nameprop = props->getNode("name");
+        if (nameprop) {
+          name = nameprop->getStringValue();
+          // Look for 'property' nodes within the dialog. (could
+          // also look for "dialog-name" to catch things like
+          // dialog-show.)
+          std::vector<std::string> property_paths;
+          findAllLeafValues(props, "property", property_paths);
+          for (auto property_path: property_paths) {
+              // We could maybe hoist this test for highlight to avoid reaching
+              // here if it is null, but that's difficult to test, so we do it
+              // here instead.
+              if (highlight) {
+                  highlight->addPropertyDialog(property_path, name);
+              }
+          }
+        }
+      }
+
+      if (!cache->isCachedFileModified(xmlPath)) {
+        // cached, easy
+        string name = cache->readStringProperty(xmlPath.utf8Str());
+        // The translation domain can be overridden from the xmlPath contents
+        setDialogMetadata(name, xmlPath, translationDomain);
+        continue;
+      }
+
+      // we need to parse the actual XML
+      if (!props) {
+        SG_LOG(SG_INPUT, SG_ALERT, "Error parsing dialog " << xmlPath);
+        continue;
+      }
+
+      if (!nameprop) {
+        SG_LOG(SG_INPUT, SG_WARN, "dialog " << xmlPath << " has no name; skipping.");
+        continue;
+      }
+
+      setDialogMetadata(name, xmlPath, translationDomain);
+      // update cached values
+      if (!cache->isReadOnly()) {
+        cache->stampCacheFile(xmlPath);
+        cache->writeStringProperty(xmlPath.utf8Str(), name);
+      }
+    } // of directory children iteration
+
+    txn.commit();
+}
+
+////////////////////////////////////////////////////////////////////////
+// Style handling.
+////////////////////////////////////////////////////////////////////////
+
+void
+NewGUI::setStyle (void)
+{
+    _itt_t it;
+    for (it = _colors.begin(); it != _colors.end(); ++it)
+      delete it->second;
+    _colors.clear();
+
+    // set up the traditional colors as default
+    _colors["background"] = new FGColor(0.8f, 0.8f, 0.9f, 0.85f);
+    _colors["foreground"] = new FGColor(0.0f, 0.0f, 0.0f, 1.0f);
+    _colors["highlight"]  = new FGColor(0.7f, 0.7f, 0.7f, 1.0f);
+    _colors["label"]      = new FGColor(0.0f, 0.0f, 0.0f, 1.0f);
+    _colors["legend"]     = new FGColor(0.0f, 0.0f, 0.0f, 1.0f);
+    _colors["misc"]       = new FGColor(0.0f, 0.0f, 0.0f, 1.0f);
+    _colors["inputfield"] = new FGColor(0.8f, 0.7f, 0.7f, 1.0f);
+
+    //puSetDefaultStyle();
+
+
+    if (0) {
+        // Re-read gui/style/*.xml files so that one can edit them and see the
+        // results without restarting flightgear.
+        SGPath  p(globals->get_fg_root(), "gui/styles");
+        SGPropertyNode* sim_gui = globals->get_props()->getNode("sim/gui/", true);
+        simgear::Dir dir(p);
+        int i = 0;
+        for (SGPath xml: dir.children(simgear::Dir::TYPE_FILE, ".xml")) {
+            SGPropertyNode_ptr node = sim_gui->getChild("style", i, true);
+            node->removeAllChildren();
+            SG_LOG(SG_GENERAL, SG_WARN, "reading from " << xml << " into " << node->getPath());
+            readProperties(xml, node);
+            i += 1;
+        }
+    }
+
+    int which = fgGetInt("/sim/gui/current-style", 0);
+    SGPropertyNode *sim = globals->get_props()->getNode("sim/gui", true);
+    SGPropertyNode *n = sim->getChild("style", which);
+    if (!n)
+        n = sim->getChild("style", 0, true);
+
+    SGPropertyNode *selected_style = globals->get_props()->getNode("sim/gui/selected-style", true);
+
+    // n->copy() doesn't delete existing nodes, so need to clear them all
+    // first.
+    selected_style->removeAllChildren();
+    copyProperties(n, selected_style);
+
+    //if (selected_style && n)
+    //    n->alias(selected_style);
+
+    //setupFont(n->getNode("fonts/gui", true));
+    n = n->getNode("colors", true);
+
+    for (int i = 0; i < n->nChildren(); i++) {
+        SGPropertyNode *child = n->getChild(i);
+        _colors[child->getNameString()] = new FGColor(child);
+    }
+}
+
+
+// Register the subsystem.
+SGSubsystemMgr::Registrant<NewGUI> registrantNewGUI(
+    SGSubsystemMgr::INIT);
+
+// end of new_gui.cxx

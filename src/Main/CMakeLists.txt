@@ -1,0 +1,139 @@
+# SPDX-FileCopyrightText: 2010 James Turner <james@flightgear.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+# CMake module includes.
+include(FlightGearComponent)
+include(SetupFGFSBundle)
+include(SetupFGFSEmbeddedResources)
+include(SetupFGFSIncludes)
+include(SetupFGFSLibraries)
+
+# Set up the Main FG file sources and headers (excluding bootstrap.cxx and its main() function).
+if(MSVC)
+    set(MS_RESOURCE_FILE flightgear.rc)
+endif(MSVC)
+
+set(SOURCES
+
+    fg_commands.cxx
+    fg_init.cxx
+    fg_io.cxx
+    fg_os_common.cxx
+    fg_scene_commands.cxx
+    fg_props.cxx
+    FGInterpolator.cxx
+    globals.cxx
+    locale.cxx
+    logger.cxx
+    main.cxx
+    MultipleInstanceLock.cxx
+    options.cxx
+    positioninit.cxx
+    screensaver_control.cxx
+    subsystemFactory.cxx
+    util.cxx
+    ErrorReporter.cxx
+    ${MS_RESOURCE_FILE}
+)
+
+set(HEADERS
+    AircraftDirVisitorBase.hxx
+    fg_commands.hxx
+    fg_init.hxx
+    fg_io.hxx
+    fg_props.hxx
+    FGInterpolator.hxx
+    globals.hxx
+    locale.hxx
+    logger.hxx
+    main.hxx
+    MultipleInstanceLock.hxx
+    options.hxx
+    positioninit.hxx
+    screensaver_control.hxx
+    subsystemFactory.hxx
+    util.hxx
+    ErrorReporter.hxx
+    sentryIntegration.hxx
+)
+
+flightgear_component(Main "${SOURCES}" "${HEADERS}" sentryIntegration.cxx)
+
+# the main() function
+set(MAIN_SOURCE
+    bootstrap.cxx
+    # we only want this file when building FGFS, so it can't be
+    # part of fgfsObjects
+    ${PROJECT_SOURCE_DIR}/src/Scripting/NasalUnitTesting.cxx
+)
+
+# Set up the embedded resources.
+setup_fgfs_embedded_resources()
+
+# souerces which are different for fgfs vs the test-suite
+get_property(TEST_SOURCES GLOBAL PROPERTY FG_TEST_SOURCES)
+
+
+# important we pass WIN32 here so the console is optional. Other
+# platforms ignore this option. If a console is needed we allocate
+# it manually via AllocConsole()
+# similarly pass MACOSX_BUNDLE so we generate a .app on Mac
+add_executable(fgfs
+    WIN32
+    MACOSX_BUNDLE
+    ${MAIN_SOURCE}
+    ${TEST_SOURCES}
+)
+
+# link to our OBJECT library
+target_link_libraries(fgfs PRIVATE fgfsObjects)
+
+add_dependencies(fgfs buildId)
+# explicitly disable automoc for main fgfs target
+set_property(TARGET fgfs PROPERTY AUTOMOC OFF)
+
+# MacOSX bundle packaging
+if(APPLE)
+    setup_fgfs_bundle(fgfs)
+endif()
+
+target_precompile_headers(fgfs PRIVATE
+        "$<$<COMPILE_LANGUAGE:CXX>:${PROJECT_SOURCE_DIR}/src/Include/flightgear_precompile.h>")
+
+# Set up the target links.
+setup_fgfs_libraries(fgfs)
+export_debug_symbols(fgfs)
+# Additional search paths for includes.
+setup_fgfs_includes(fgfs)
+
+# installation of fgfs is handled in Installation.cmake
+# order is very important for correct macOS bundle assembly
+
+add_executable(nasal
+    nasal-bin.cxx
+    ${PROJECT_SOURCE_DIR}/src/Scripting/sqlitelib.cxx
+)
+setup_fgfs_libraries(nasal)
+install(TARGETS nasal RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+if(ENABLE_METAR)
+    add_executable(metar metar_main.cxx)
+    target_link_libraries(metar SimGearScene)
+    install(TARGETS metar RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+endif()
+
+# ensure run/debug paths are set automatically in Visual Studio
+if (MSVC)
+  file(TO_NATIVE_PATH "${FG_QT_BIN_DIR}" _qt_bin_dir_native)
+  file(TO_NATIVE_PATH "${FINAL_MSVC_3RDPARTY_DIR}/bin" _msvc_3rdparty_bin_dir)
+  file(TO_NATIVE_PATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}" _install_bin_dir)
+  file(TO_NATIVE_PATH "${OSG_BASE_DIR}/bin" _osg_bin_dir_native)
+
+  file(TO_NATIVE_PATH "${FG_QT_BIN_DIR}/../plugins" _qt_plugin_dir_native)
+  file(TO_NATIVE_PATH "${FG_QT_BIN_DIR}/../qml" _qt_qml_dir_native)
+
+  set_property(TARGET fgfs PROPERTY
+  VS_GLOBAL_LocalDebuggerEnvironment
+    "PATH=${_osg_bin_dir_native};${_install_bin_dir};${_msvc_3rdparty_bin_dir};${_qt_bin_dir_native}\nQT_PLUGIN_PATH=${_qt_plugin_dir_native}\nQML_IMPORT_PATH=${_qt_qml_dir_native}"
+)
+endif()

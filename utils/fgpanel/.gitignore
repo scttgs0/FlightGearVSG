@@ -1,0 +1,4 @@
+fgpanel
+*.o
+*.obj
+Makefile

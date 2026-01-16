@@ -1,0 +1,74 @@
+include(FlightGearComponent)
+
+set(SOURCES
+    AbstractInstrument.cxx
+    adf.cxx
+    airspeed_indicator.cxx
+    altimeter.cxx
+    attitude_indicator.cxx
+    attitude_indicator_electric.cxx
+    clock.cxx
+    dme.cxx
+    gps.cxx
+    gsdi.cxx
+    gyro.cxx
+    heading_indicator.cxx
+    heading_indicator_dg.cxx
+    heading_indicator_fg.cxx
+    inst_vertical_speed_indicator.cxx
+    instrument_mgr.cxx
+    kr_87.cxx
+    mag_compass.cxx
+    marker_beacon.cxx
+    mk_viii.cxx
+    mrg.cxx
+    navradio.cxx
+    newnavradio.cxx
+    commradio.cxx
+    rad_alt.cxx
+    rnav_waypt_controller.cxx
+    slip_skid_ball.cxx
+    tacan.cxx
+    tcas.cxx
+    transponder.cxx
+    turn_indicator.cxx
+    vertical_speed_indicator.cxx
+    )
+
+set(HEADERS
+    AbstractInstrument.hxx
+    adf.hxx
+    airspeed_indicator.hxx
+    altimeter.hxx
+    attitude_indicator.hxx
+    attitude_indicator_electric.hxx
+    clock.hxx
+    dme.hxx
+    gps.hxx
+    gsdi.hxx
+    gyro.hxx
+    heading_indicator.hxx
+    heading_indicator_dg.hxx
+    heading_indicator_fg.hxx
+    inst_vertical_speed_indicator.hxx
+    instrument_mgr.hxx
+    kr_87.hxx
+    mag_compass.hxx
+    marker_beacon.hxx
+    mk_viii.hxx
+    mrg.hxx
+    navradio.hxx
+    newnavradio.hxx
+    commradio.hxx
+    rad_alt.hxx
+    rnav_waypt_controller.hxx
+    slip_skid_ball.hxx
+    tacan.hxx
+    tcas.hxx
+    transponder.hxx
+    turn_indicator.hxx
+    vertical_speed_indicator.hxx
+)
+
+
+flightgear_component(Instruments "${SOURCES}" "${HEADERS}")
