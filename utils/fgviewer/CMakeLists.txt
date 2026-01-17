@@ -1,10 +1,12 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 set(FGVIEWER_SOURCES
-  ArgumentParser.cxx
-  fgviewer.cxx
-  Drawable.cxx
-  Renderer.cxx
-  SlaveCamera.cxx
-  Viewer.cxx
+    ArgumentParser.cxx
+    fgviewer.cxx
+    Drawable.cxx
+    Renderer.cxx
+    SlaveCamera.cxx
+    Viewer.cxx
 )
 
 add_executable(fgviewer ${FGVIEWER_SOURCES})
@@ -13,6 +15,9 @@ if(X11_FOUND)
 endif()
 
 target_link_libraries(fgviewer
-        SimGearScene SimGearCore OpenGL::GL
+    SimGearScene
+    SimGearCore
+    OpenGL::GL
 )
+
 install(TARGETS fgviewer RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

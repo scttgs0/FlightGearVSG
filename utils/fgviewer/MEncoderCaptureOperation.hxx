@@ -1,20 +1,9 @@
-// MEncoderCaptureOperation.hxx -- capture video stream into mencoder
-//
-// Copyright (C) 2009 - 2012  Mathias Froehlich
-//
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of the
-// License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+/*
+ * SPDX-FileName: MEncoderCaptureOperation.hxx
+ * SPDX-FileComment: capture video stream into mencoder
+ * SPDX-FileCopyrightText: Copyright (C) 2009 - 2012  Mathias Froehlich
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #pragma once
 
@@ -33,33 +22,48 @@
 
 namespace fgviewer {
 
-class MEncoderCaptureOperation : public osgViewer::ScreenCaptureHandler::CaptureOperation {
+class MEncoderCaptureOperation : public osgViewer::ScreenCaptureHandler::CaptureOperation
+{
 public:
-    MEncoderCaptureOperation(const std::string& fileName = "video.avi", unsigned fps = 30) :
-        _fps(fps),
-        _fileName(fileName),
-        _options("-ovc lavc"),
-        _file(0),
-        _width(-1),
-        _height(-1)
-    { }
+    MEncoderCaptureOperation(const std::string& fileName = "video.avi", unsigned fps = 30) : _fps(fps),
+                                                                                             _fileName(fileName),
+                                                                                             _options("-ovc lavc"),
+                                                                                             _file(0),
+                                                                                             _width(-1),
+                                                                                             _height(-1)
+    {
+    }
     virtual ~MEncoderCaptureOperation()
-    { _close(); }
+    {
+        _close();
+    }
 
     const std::string& getFileName() const
-    { return _fileName; }
+    {
+        return _fileName;
+    }
     void setFileName(const std::string& fileName)
-    { _fileName = fileName; }
+    {
+        _fileName = fileName;
+    }
 
     unsigned getFramesPerSecond() const
-    { return _fps; }
+    {
+        return _fps;
+    }
     void setFramesPerSecond(unsigned fps)
-    { _fps = fps; }
+    {
+        _fps = fps;
+    }
 
     const std::string& getOptions() const
-    { return _options; }
+    {
+        return _options;
+    }
     void setOptions(const std::string& options)
-    { _options = options; }
+    {
+        _options = options;
+    }
 
     virtual void operator()(const osg::Image& image, const unsigned int)
     {
@@ -132,4 +136,4 @@ private:
     int _height;
 };
 
-}
+} // namespace fgviewer

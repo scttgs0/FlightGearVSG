@@ -1,35 +1,19 @@
-// Viewer.hxx -- alternative flightgear viewer application
-//
-// Copyright (C) 2009 - 2012  Mathias Froehlich
-//
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of the
-// License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#include "Renderer.hxx"
+/*
+ * SPDX-FileName: Renderer.cxx
+ * SPDX-FileCopyrightText: Copyright (C) 2009 - 2012  Mathias Froehlich
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #include <osgViewer/Renderer>
+
 #include <simgear/scene/material/EffectCullVisitor.hxx>
 
 #include "Drawable.hxx"
-#include "Viewer.hxx"
+#include "Renderer.hxx"
 #include "SlaveCamera.hxx"
+#include "Viewer.hxx"
 
-namespace fgviewer  {
+namespace fgviewer {
 
 // FIXME I understand why we currently need this, but this seems like
 // weird to require an own cull visitor.
@@ -54,11 +38,11 @@ static void installCullVisitor(osg::Camera& camera)
     }
 }
 
-class Renderer::_SlaveCamera : public SlaveCamera {
+class Renderer::_SlaveCamera : public SlaveCamera
+{
 public:
-    _SlaveCamera(const std::string& name) :
-        SlaveCamera(name)
-    { 
+    _SlaveCamera(const std::string& name) : SlaveCamera(name)
+    {
     }
     virtual ~_SlaveCamera()
     {
@@ -73,7 +57,7 @@ public:
 
         viewer.addSlave(camera, osg::Matrix::identity(), getViewOffset(), false /*useMastersSceneData*/);
         installCullVisitor(*camera);
-    
+
         return camera;
     }
     virtual bool _updateImplementation(Viewer& viewer)
@@ -104,16 +88,14 @@ Renderer::createSlaveCamera(Viewer&, const std::string& name)
     return new _SlaveCamera(name);
 }
 
-bool
-Renderer::realize(Viewer& viewer)
+bool Renderer::realize(Viewer& viewer)
 {
     if (!viewer.realizeDrawables())
         return false;
     return viewer.realizeSlaveCameras();
 }
 
-bool
-Renderer::update(Viewer& viewer)
+bool Renderer::update(Viewer& viewer)
 {
     return viewer.updateSlaveCameras();
 }

@@ -1,36 +1,37 @@
-// fgviewer.cxx -- alternative flightgear viewer application
-//
-// SPDX-FileCopyrightText: Copyright (C) 2009 - 2012  Mathias Froehlich
-// SPDX-License-Identifier: GPL-2.0-or-later
+/*
+ * SPDX-FileName: fgviewer.cxx
+ * SPDX-FileComment: alternative FlightGear viewer application
+ * SPDX-FileCopyrightText: Copyright (C) 2009 - 2012  Mathias Froehlich
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #include <config.h>
 
 #include <osg/Version>
 #include <osgDB/ReadFile>
-#include <osgViewer/ViewerEventHandlers>
+#include <osgGA/DriveManipulator>
+#include <osgGA/FlightManipulator>
 #include <osgGA/KeySwitchMatrixManipulator>
 #include <osgGA/StateSetManipulator>
-#include <osgGA/TrackballManipulator>
-#include <osgGA/FlightManipulator>
-#include <osgGA/DriveManipulator>
 #include <osgGA/TerrainManipulator>
+#include <osgGA/TrackballManipulator>
+#include <osgViewer/ViewerEventHandlers>
 
+#include <simgear/misc/ResourceManager.hxx>
 #include <simgear/props/props.hxx>
 #include <simgear/props/props_io.hxx>
 #include <simgear/scene/material/matlib.hxx>
+#include <simgear/scene/model/ModelRegistry.hxx>
+#include <simgear/scene/tgdb/userdata.hxx>
 #include <simgear/scene/util/SGReaderWriterOptions.hxx>
 #include <simgear/scene/util/SGSceneFeatures.hxx>
-#include <simgear/scene/tgdb/userdata.hxx>
-#include <simgear/scene/model/ModelRegistry.hxx>
-#include <simgear/misc/ResourceManager.hxx>
 
 #include "ArgumentParser.hxx"
 #include "Renderer.hxx"
 #include "Viewer.hxx"
 
 
-int
-main(int argc, char** argv)
+int main(int argc, char** argv)
 {
     /// Read arguments and environment variables.
     ArgumentParser arguments(argc, argv);
@@ -70,7 +71,7 @@ main(int argc, char** argv)
         props->getNode("sim/startup/season", true)->setStringValue("summer");
 
         SG_LOG(SG_GENERAL, SG_ALERT, "Problems loading FlightGear preferences.\n"
-               << "Probably FG_ROOT is not properly set.");
+                                         << "Probably FG_ROOT is not properly set.");
     }
 
     std::string config;
@@ -78,8 +79,7 @@ main(int argc, char** argv)
         try {
             readProperties(config, props);
         } catch (...) {
-            SG_LOG(SG_GENERAL, SG_ALERT, "Problems loading config file \"" << config
-                   << "\" given on the command line.");
+            SG_LOG(SG_GENERAL, SG_ALERT, "Problems loading config file \"" << config << "\" given on the command line.");
         }
     }
 
@@ -109,8 +109,7 @@ main(int argc, char** argv)
         viewer.setRenderer(new fgviewer::Renderer);
 
     } else {
-        SG_LOG(SG_GENERAL, SG_ALERT, "Unknown renderer configuration \"" << renderer
-               << "\" given on the command line.");
+        SG_LOG(SG_GENERAL, SG_ALERT, "Unknown renderer configuration \"" << renderer << "\" given on the command line.");
         return EXIT_FAILURE;
     }
 
@@ -168,7 +167,7 @@ main(int argc, char** argv)
         ml->load(fg_root.local8BitStr(), mpath.local8BitStr(), props);
     } catch (...) {
         SG_LOG(SG_GENERAL, SG_ALERT, "Problems loading FlightGear materials.\n"
-               << "Probably FG_ROOT is not properly set.");
+                                         << "Probably FG_ROOT is not properly set.");
     }
     simgear::SGModelLib::init(fg_root.local8BitStr(), props);
 
@@ -187,7 +186,7 @@ main(int argc, char** argv)
     options->setPluginStringData("SimGear::BOUNDINGVOLUMES", "OFF");
     GLint max_texture_size;
     glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
-    options->setPluginStringData("SimGear::MAXTEXTURESIZE", std::to_string(max_texture_size? max_texture_size:8192));
+    options->setPluginStringData("SimGear::MAXTEXTURESIZE", std::to_string(max_texture_size ? max_texture_size : 8192));
     viewer.setReaderWriterOptions(options.get());
 
     // Here, all arguments are processed
@@ -208,8 +207,7 @@ main(int argc, char** argv)
 
     // if no model has been successfully loaded report failure.
     if (!loadedModel.valid()) {
-        SG_LOG(SG_GENERAL, SG_ALERT, arguments.getApplicationName()
-               << ": No data loaded");
+        SG_LOG(SG_GENERAL, SG_ALERT, arguments.getApplicationName() << ": No data loaded");
         return EXIT_FAILURE;
     }
 

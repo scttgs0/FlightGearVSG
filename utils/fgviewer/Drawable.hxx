@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileName: Drawable.hxx
+ * SPDX-FileCopyrightText: Copyright (C) 2009 - 2012  Mathias Froehlich
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 // Copyright (C) 2009 - 2012  Mathias Froehlich
 //
 // This program is free software; you can redistribute it and/or
@@ -16,25 +22,30 @@
 
 #pragma once
 
-#include <string>
 #include <list>
+#include <string>
+
 #include <osg/GraphicsContext>
+
 #include <simgear/math/SGMath.hxx>
 #include <simgear/structure/SGWeakReferenced.hxx>
 
-namespace fgviewer  {
+namespace fgviewer {
 
 class Viewer;
 class SlaveCamera;
 
-class Drawable : public SGWeakReferenced {
+class Drawable : public SGWeakReferenced
+{
 public:
     Drawable(const std::string& name);
     virtual ~Drawable();
-    
+
     const std::string& getName() const
-    { return _name; }
-    
+    {
+        return _name;
+    }
+
     virtual bool setScreenIdentifier(const std::string& screenIdentifier)
     {
         if (_graphicsContext.valid())
@@ -43,18 +54,30 @@ public:
         return true;
     }
     const std::string& getScreenIdentifier() const
-    { return _screenIdentifier; }
-    
+    {
+        return _screenIdentifier;
+    }
+
     virtual bool setPosition(const SGVec2i& position)
-    { _position = position; return true; }
+    {
+        _position = position;
+        return true;
+    }
     const SGVec2i& getPosition() const
-    { return _position; }
-    
+    {
+        return _position;
+    }
+
     virtual bool setSize(const SGVec2i& size)
-    { _size = size; return true; }
+    {
+        _size = size;
+        return true;
+    }
     const SGVec2i& getSize() const
-    { return _size; }
-    
+    {
+        return _size;
+    }
+
     virtual bool setOffscreen(bool offscreen)
     {
         if (_graphicsContext.valid())
@@ -63,18 +86,27 @@ public:
         return true;
     }
     bool getOffscreen() const
-    { return _offscreen; }
-    
+    {
+        return _offscreen;
+    }
+
     virtual bool setFullscreen(bool fullscreen)
-    { _fullscreen = fullscreen; return true; }
+    {
+        _fullscreen = fullscreen;
+        return true;
+    }
     bool getFullscreen() const
-    { return _fullscreen; }
-    
+    {
+        return _fullscreen;
+    }
+
     osg::GraphicsContext* getGraphicsContext()
-    { return _graphicsContext.get(); }
+    {
+        return _graphicsContext.get();
+    }
 
     void attachSlaveCamera(SlaveCamera* slaveCamera);
-    
+
     virtual bool resize(int x, int y, int width, int height);
 
     bool realize(Viewer& viewer);
@@ -82,7 +114,7 @@ public:
 protected:
     virtual osg::GraphicsContext* _realizeImplementation(Viewer& viewer);
     osg::ref_ptr<osg::GraphicsContext::Traits> _getTraits(Viewer& viewer);
-    
+
 private:
     Drawable(const Drawable&);
     Drawable& operator=(const Drawable&);
@@ -97,7 +129,7 @@ private:
     bool _offscreen;
     bool _fullscreen;
     osg::ref_ptr<osg::GraphicsContext> _graphicsContext;
-    std::list<SGSharedPtr<SlaveCamera> > _slaveCameraList;
+    std::list<SGSharedPtr<SlaveCamera>> _slaveCameraList;
 };
 
 } // namespace fgviewer

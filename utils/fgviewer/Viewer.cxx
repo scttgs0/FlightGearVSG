@@ -1,49 +1,34 @@
-// Viewer.cxx -- alternative flightgear viewer application
-//
-// Copyright (C) 2009 - 2012  Mathias Froehlich
-//
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of the
-// License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#include "Viewer.hxx"
-
-#include <osg/Version>
-#include <osg/ProxyNode>
-#include <osg/PagedLOD>
-#include <osgDB/ReadFile>
-
-#ifdef __linux__
-#include <X11/Xlib.h>
-#include <osgViewer/api/X11/GraphicsWindowX11>
-#endif
-
-#include "MEncoderCaptureOperation.hxx"
-#include "ArgumentParser.hxx"
+/*
+ * SPDX-FileName: Viewer.cxx
+ * SPDX-FileComment: alternative FlightGear viewer application
+ * SPDX-FileCopyrightText: Copyright (C) 2009 - 2012  Mathias Froehlich
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #include <cassert>
 
-namespace fgviewer  {
+#ifdef __linux__
+#include <X11/Xlib.h>
 
-Viewer::Viewer(ArgumentParser& arguments) :
-    osgViewer::Viewer(arguments.osg()),
-    _sceneDataGroup(new osg::Group),
-    _timeIncrement(SGTimeStamp::fromSec(0)),
-    _simTime(SGTimeStamp::fromSec(0))
+#include <osgViewer/api/X11/GraphicsWindowX11>
+#endif
+
+#include <osg/PagedLOD>
+#include <osg/ProxyNode>
+#include <osg/Version>
+#include <osgDB/ReadFile>
+
+#include "ArgumentParser.hxx"
+#include "MEncoderCaptureOperation.hxx"
+#include "Viewer.hxx"
+
+
+namespace fgviewer {
+
+Viewer::Viewer(ArgumentParser& arguments) : osgViewer::Viewer(arguments.osg()),
+                                            _sceneDataGroup(new osg::Group),
+                                            _timeIncrement(SGTimeStamp::fromSec(0)),
+                                            _simTime(SGTimeStamp::fromSec(0))
 {
     /// Careful: this method really assigns the sceneDataGroup to all cameras!
     /// FIXME the 'useMasterScene' flag at the slave is able to get around that!!!
@@ -57,8 +42,7 @@ Viewer::~Viewer()
     stopThreading();
 }
 
-bool
-Viewer::readCameraConfig(const SGPropertyNode& viewerNode)
+bool Viewer::readCameraConfig(const SGPropertyNode& viewerNode)
 {
     // Collect and realize all windows
     for (int i = 0; i < viewerNode.nChildren(); ++i) {
@@ -100,7 +84,7 @@ Viewer::readCameraConfig(const SGPropertyNode& viewerNode)
             unsigned fps = windowNode->getIntValue("frames-per-second", 30);
 
             /// This is the case for the video writers, have a fixed time increment
-            _timeIncrement = SGTimeStamp::fromSec(1.0/fps);
+            _timeIncrement = SGTimeStamp::fromSec(1.0 / fps);
 
             MEncoderCaptureOperation* captureOperation;
             captureOperation = new MEncoderCaptureOperation(outputFile, fps);
@@ -110,7 +94,6 @@ Viewer::readCameraConfig(const SGPropertyNode& viewerNode)
             captureHandler->startCapture();
 
         } else {
-
             SGVec2i position;
             position[0] = windowNode->getIntValue("geometry/x", 0);
             position[1] = windowNode->getIntValue("geometry/y", 0);
@@ -208,7 +191,6 @@ Viewer::readCameraConfig(const SGPropertyNode& viewerNode)
             slaveCamera->setFustumByFieldOfViewDeg(fieldOfViewDeg);
 
         } else if (const SGPropertyNode* monitorNode = cameraNode->getNode("monitor")) {
-
             std::string referenceCameraName;
             std::string names[2];
             std::string referenceNames[2];
@@ -250,8 +232,7 @@ Viewer::readCameraConfig(const SGPropertyNode& viewerNode)
             if (SlaveCamera* referenceSlaveCamera = getSlaveCamera(referenceCameraName)) {
                 slaveCamera->setRelativeFrustum(names, *referenceSlaveCamera, referenceNames);
             } else {
-                SG_LOG(SG_VIEW, SG_ALERT, "Unable to find reference camera \"" << referenceCameraName
-                       << "\" for camera \"" << name << "\"!");
+                SG_LOG(SG_VIEW, SG_ALERT, "Unable to find reference camera \"" << referenceCameraName << "\" for camera \"" << name << "\"!");
             }
         } else {
             // Set a proper default taking the current aspect ratio into account
@@ -262,8 +243,7 @@ Viewer::readCameraConfig(const SGPropertyNode& viewerNode)
     return true;
 }
 
-void
-Viewer::setupDefaultCameraConfigIfUnset()
+void Viewer::setupDefaultCameraConfigIfUnset()
 {
     if (getNumDrawables() || getNumSlaveCameras())
         return;
@@ -287,14 +267,12 @@ Viewer::setupDefaultCameraConfigIfUnset()
     slaveCamera->setFustumByFieldOfViewDeg(55);
 }
 
-bool
-Viewer::readConfiguration(const std::string&)
+bool Viewer::readConfiguration(const std::string&)
 {
     return false;
 }
 
-void
-Viewer::setRenderer(Renderer* renderer)
+void Viewer::setRenderer(Renderer* renderer)
 {
     if (!renderer) {
         SG_LOG(SG_VIEW, SG_ALERT, "Viewer::setRenderer(): Setting the renderer to zero is not supported!");
@@ -307,14 +285,12 @@ Viewer::setRenderer(Renderer* renderer)
     _renderer = renderer;
 }
 
-Renderer*
-Viewer::getRenderer()
+Renderer* Viewer::getRenderer()
 {
     return _renderer.get();
 }
 
-Drawable*
-Viewer::getOrCreateDrawable(const std::string& name)
+Drawable* Viewer::getOrCreateDrawable(const std::string& name)
 {
     Drawable* drawable = getDrawable(name);
     if (drawable)
@@ -328,14 +304,12 @@ Viewer::getOrCreateDrawable(const std::string& name)
     return drawable;
 }
 
-Drawable*
-Viewer::getDrawable(const std::string& name)
+Drawable* Viewer::getDrawable(const std::string& name)
 {
     return getDrawable(getDrawableIndex(name));
 }
 
-unsigned
-Viewer::getDrawableIndex(const std::string& name)
+unsigned Viewer::getDrawableIndex(const std::string& name)
 {
     for (DrawableVector::size_type i = 0; i < _drawableVector.size(); ++i) {
         if (_drawableVector[i]->getName() == name)
@@ -344,22 +318,19 @@ Viewer::getDrawableIndex(const std::string& name)
     return ~0u;
 }
 
-Drawable*
-Viewer::getDrawable(unsigned index)
+Drawable* Viewer::getDrawable(unsigned index)
 {
     if (_drawableVector.size() <= index)
         return 0;
     return _drawableVector[index].get();
 }
 
-unsigned
-Viewer::getNumDrawables() const
+unsigned Viewer::getNumDrawables() const
 {
     return _drawableVector.size();
 }
 
-SlaveCamera*
-Viewer::getOrCreateSlaveCamera(const std::string& name)
+SlaveCamera* Viewer::getOrCreateSlaveCamera(const std::string& name)
 {
     SlaveCamera* slaveCamera = getSlaveCamera(name);
     if (slaveCamera)
@@ -373,14 +344,12 @@ Viewer::getOrCreateSlaveCamera(const std::string& name)
     return slaveCamera;
 }
 
-SlaveCamera*
-Viewer::getSlaveCamera(const std::string& name)
+SlaveCamera* Viewer::getSlaveCamera(const std::string& name)
 {
     return getSlaveCamera(getSlaveCameraIndex(name));
 }
 
-unsigned
-Viewer::getSlaveCameraIndex(const std::string& name)
+unsigned Viewer::getSlaveCameraIndex(const std::string& name)
 {
     for (SlaveCameraVector::size_type i = 0; i < _slaveCameraVector.size(); ++i) {
         if (_slaveCameraVector[i]->getName() == name)
@@ -389,22 +358,19 @@ Viewer::getSlaveCameraIndex(const std::string& name)
     return ~0u;
 }
 
-SlaveCamera*
-Viewer::getSlaveCamera(unsigned index)
+SlaveCamera* Viewer::getSlaveCamera(unsigned index)
 {
     if (_slaveCameraVector.size() <= index)
         return 0;
     return _slaveCameraVector[index].get();
 }
 
-unsigned
-Viewer::getNumSlaveCameras() const
+unsigned Viewer::getNumSlaveCameras() const
 {
     return _slaveCameraVector.size();
 }
 
-void
-Viewer::realize()
+void Viewer::realize()
 {
     if (isRealized())
         return;
@@ -424,8 +390,7 @@ Viewer::realize()
     osgViewer::Viewer::realize();
 }
 
-bool
-Viewer::realizeDrawables()
+bool Viewer::realizeDrawables()
 {
     for (DrawableVector::iterator i = _drawableVector.begin(); i != _drawableVector.end(); ++i) {
         if (!(*i)->realize(*this)) {
@@ -437,8 +402,7 @@ Viewer::realizeDrawables()
     return true;
 }
 
-bool
-Viewer::realizeSlaveCameras()
+bool Viewer::realizeSlaveCameras()
 {
     for (SlaveCameraVector::iterator i = _slaveCameraVector.begin(); i != _slaveCameraVector.end(); ++i) {
         if (!(*i)->realize(*this)) {
@@ -450,8 +414,7 @@ Viewer::realizeSlaveCameras()
     return true;
 }
 
-void
-Viewer::advance(double)
+void Viewer::advance(double)
 {
     if (_timeIncrement == SGTimeStamp::fromSec(0)) {
         // Flightgears current scheme - could be improoved
@@ -468,8 +431,7 @@ Viewer::advance(double)
     osgViewer::Viewer::advance(_simTime.toSecs());
 }
 
-void
-Viewer::updateTraversal()
+void Viewer::updateTraversal()
 {
     osgViewer::Viewer::updateTraversal();
 
@@ -478,8 +440,7 @@ Viewer::updateTraversal()
     }
 }
 
-bool
-Viewer::updateSlaveCameras()
+bool Viewer::updateSlaveCameras()
 {
     for (SlaveCameraVector::iterator i = _slaveCameraVector.begin(); i != _slaveCameraVector.end(); ++i) {
         if (!(*i)->update(*this)) {
@@ -490,33 +451,28 @@ Viewer::updateSlaveCameras()
     return true;
 }
 
-void
-Viewer::setReaderWriterOptions(simgear::SGReaderWriterOptions* readerWriterOptions)
+void Viewer::setReaderWriterOptions(simgear::SGReaderWriterOptions* readerWriterOptions)
 {
     _readerWriterOptions = readerWriterOptions;
 }
 
-simgear::SGReaderWriterOptions*
-Viewer::getReaderWriterOptions()
+simgear::SGReaderWriterOptions* Viewer::getReaderWriterOptions()
 {
     return _readerWriterOptions.get();
 }
 
-void
-Viewer::setSceneData(osg::Node* node)
+void Viewer::setSceneData(osg::Node* node)
 {
     _sceneDataGroup->removeChildren(0, _sceneDataGroup->getNumChildren());
     insertSceneData(node);
 }
 
-void
-Viewer::insertSceneData(osg::Node* node)
+void Viewer::insertSceneData(osg::Node* node)
 {
     _sceneDataGroup->addChild(node);
 }
 
-bool
-Viewer::insertSceneData(const std::string& fileName, const osgDB::Options* options)
+bool Viewer::insertSceneData(const std::string& fileName, const osgDB::Options* options)
 {
 #if 0
     osg::ProxyNode* proxyNode = new osg::ProxyNode;
@@ -536,20 +492,21 @@ Viewer::insertSceneData(const std::string& fileName, const osgDB::Options* optio
 #endif
 }
 
-osg::Group*
-Viewer::getSceneDataGroup()
+osg::Group* Viewer::getSceneDataGroup()
 {
     return _sceneDataGroup.get();
 }
 
-class Viewer::_PurgeLevelOfDetailNodesVisitor : public osg::NodeVisitor {
+class Viewer::_PurgeLevelOfDetailNodesVisitor : public osg::NodeVisitor
+{
 public:
-    _PurgeLevelOfDetailNodesVisitor() :
-        osg::NodeVisitor(osg::NodeVisitor::TRAVERSE_ALL_CHILDREN)
-    { }
+    _PurgeLevelOfDetailNodesVisitor() : osg::NodeVisitor(osg::NodeVisitor::TRAVERSE_ALL_CHILDREN)
+    {
+    }
     virtual ~_PurgeLevelOfDetailNodesVisitor()
-    { }
-  
+    {
+    }
+
     virtual void apply(osg::ProxyNode& node)
     {
         for (unsigned i = 0; i < node.getNumChildren(); ++i) {
@@ -574,15 +531,13 @@ public:
     }
 };
 
-void
-Viewer::purgeLevelOfDetailNodes()
+void Viewer::purgeLevelOfDetailNodes()
 {
     _PurgeLevelOfDetailNodesVisitor purgeLevelOfDetailNodesVisitor;
     _sceneDataGroup->accept(purgeLevelOfDetailNodesVisitor);
 }
 
-osg::GraphicsContext::ScreenIdentifier
-Viewer::getDefaultScreenIdentifier()
+osg::GraphicsContext::ScreenIdentifier Viewer::getDefaultScreenIdentifier()
 {
     osg::GraphicsContext::ScreenIdentifier screenIdentifier;
     screenIdentifier.readDISPLAY();
@@ -593,8 +548,7 @@ Viewer::getDefaultScreenIdentifier()
     return screenIdentifier;
 }
 
-osg::GraphicsContext::ScreenIdentifier
-Viewer::getScreenIdentifier(const std::string& display)
+osg::GraphicsContext::ScreenIdentifier Viewer::getScreenIdentifier(const std::string& display)
 {
     osg::GraphicsContext::ScreenIdentifier screenIdentifier;
     screenIdentifier.setScreenIdentifier(display);
@@ -607,12 +561,11 @@ Viewer::getScreenIdentifier(const std::string& display)
         screenIdentifier.displayNum = defaultScreenIdentifier.displayNum;
     if (screenIdentifier.screenNum < 0)
         screenIdentifier.screenNum = defaultScreenIdentifier.screenNum;
-    
+
     return screenIdentifier;
 }
 
-osg::GraphicsContext::ScreenSettings
-Viewer::getScreenSettings(const osg::GraphicsContext::ScreenIdentifier& screenIdentifier)
+osg::GraphicsContext::ScreenSettings Viewer::getScreenSettings(const osg::GraphicsContext::ScreenIdentifier& screenIdentifier)
 {
     osg::GraphicsContext::ScreenSettings screenSettings;
 
@@ -627,8 +580,7 @@ Viewer::getScreenSettings(const osg::GraphicsContext::ScreenIdentifier& screenId
     return screenSettings;
 }
 
-osg::GraphicsContext::Traits*
-Viewer::getTraits(const osg::GraphicsContext::ScreenIdentifier& screenIdentifier)
+osg::GraphicsContext::Traits* Viewer::getTraits(const osg::GraphicsContext::ScreenIdentifier& screenIdentifier)
 {
     osg::DisplaySettings* ds = _displaySettings.get();
     if (!ds)
@@ -639,7 +591,7 @@ Viewer::getTraits(const osg::GraphicsContext::ScreenIdentifier& screenIdentifier
     traits->hostName = screenIdentifier.hostName;
     traits->displayNum = screenIdentifier.displayNum;
     traits->screenNum = screenIdentifier.screenNum;
-            
+
     // not seriously consider something different
     traits->doubleBuffer = true;
 
@@ -655,10 +607,10 @@ Viewer::getTraits(const osg::GraphicsContext::ScreenIdentifier& screenIdentifier
 }
 
 #ifdef __linux__
-class Viewer::_ResetScreenSaverSwapCallback : public osg::GraphicsContext::SwapCallback {
+class Viewer::_ResetScreenSaverSwapCallback : public osg::GraphicsContext::SwapCallback
+{
 public:
-    _ResetScreenSaverSwapCallback() :
-        _timeStamp(SGTimeStamp::fromSec(0))
+    _ResetScreenSaverSwapCallback() : _timeStamp(SGTimeStamp::fromSec(0))
     {
     }
     virtual ~_ResetScreenSaverSwapCallback()
@@ -679,13 +631,13 @@ public:
         // Obviously runs in the draw thread. Thus, use the draw display.
         XResetScreenSaver(static_cast<osgViewer::GraphicsWindowX11*>(graphicsContext)->getDisplay());
     }
+
 private:
     SGTimeStamp _timeStamp;
 };
 #endif
 
-osg::GraphicsContext*
-Viewer::createGraphicsContext(osg::GraphicsContext::Traits* traits)
+osg::GraphicsContext* Viewer::createGraphicsContext(osg::GraphicsContext::Traits* traits)
 {
     osg::GraphicsContext::WindowingSystemInterface* wsi;
     wsi = osg::GraphicsContext::getWindowingSystemInterface();

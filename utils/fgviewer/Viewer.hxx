@@ -1,39 +1,29 @@
-// Viewer.hxx -- alternative flightgear viewer application
-//
-// Copyright (C) 2009 - 2012  Mathias Froehlich
-//
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License as
-// published by the Free Software Foundation; either version 2 of the
-// License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+/*
+ * SPDX-FileName: Viewer.hxx
+ * SPDX-FileComment: alternative FlightGear viewer application
+ * SPDX-FileCopyrightText: Copyright (C) 2009 - 2012  Mathias Froehlich
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #pragma once
 
 #include <osgViewer/Viewer>
 
 #include <simgear/math/SGMath.hxx>
+#include <simgear/props/props.hxx>
 #include <simgear/scene/util/SGReaderWriterOptions.hxx>
 #include <simgear/timing/timestamp.hxx>
-#include <simgear/props/props.hxx>
 
+#include "ArgumentParser.hxx"
 #include "Drawable.hxx"
 #include "Frustum.hxx"
 #include "Renderer.hxx"
 #include "SlaveCamera.hxx"
-#include "ArgumentParser.hxx"
 
-namespace fgviewer  {
+namespace fgviewer {
 
-class Viewer : public osgViewer::Viewer {
+class Viewer : public osgViewer::Viewer
+{
 public:
     Viewer(ArgumentParser& arguments);
     virtual ~Viewer();
@@ -91,7 +81,7 @@ public:
 
     /// Return a default screen identifier. Under UNIX the default DISPLAY environment variable.
     static osg::GraphicsContext::ScreenIdentifier getDefaultScreenIdentifier();
-    /// Interpret the given display. Is mergend with the default screen identifier.
+    /// Interpret the given display. Is merged with the default screen identifier.
     static osg::GraphicsContext::ScreenIdentifier getScreenIdentifier(const std::string& display);
     /// Return screen settings, mostly the resolution of the given screen.
     osg::GraphicsContext::ScreenSettings getScreenSettings(const osg::GraphicsContext::ScreenIdentifier& screenIdentifier);
@@ -115,17 +105,17 @@ private:
     SGSharedPtr<Renderer> _renderer;
 
     /// The drawables managed by this viewer.
-    typedef std::vector<SGSharedPtr<Drawable> > DrawableVector;
+    typedef std::vector<SGSharedPtr<Drawable>> DrawableVector;
     DrawableVector _drawableVector;
 
     /// The slave cameras for this viewer.
     /// Since we support more complex renderers, we can not only use osg::View::Slave.
-    typedef std::vector<SGSharedPtr<SlaveCamera> > SlaveCameraVector;
+    typedef std::vector<SGSharedPtr<SlaveCamera>> SlaveCameraVector;
     SlaveCameraVector _slaveCameraVector;
 
     /// The top level options struct
     osg::ref_ptr<simgear::SGReaderWriterOptions> _readerWriterOptions;
-  
+
     /// The top level scenegraph structure that is used for drawing
     osg::ref_ptr<osg::Group> _sceneDataGroup;
 
