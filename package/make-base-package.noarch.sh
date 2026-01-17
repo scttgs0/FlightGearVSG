@@ -66,7 +66,6 @@ tar \
 		data/Environment \
 		data/Fonts \
 		data/gui \
-		data/HLA \
 		data/Huds \
 		data/Input \
 		data/joysticks.xml \

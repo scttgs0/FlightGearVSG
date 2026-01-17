@@ -26,8 +26,6 @@
 #include "AIObject.hxx"
 #include "AIManager.hxx"
 
-#include "HLAMPAircraft.hxx"
-#include "HLAMPAircraftClass.hxx"
 #include "AIPhysics.hxx"
 
 namespace fgai {
@@ -327,15 +325,6 @@ public:
         SGVec3d angularVelocity(0, 0, SGMiscd::twopi()/_turnaroundTime);
         setPhysics(new AIPhysics(location, linearVelocity, angularVelocity));
 
-        HLAMPAircraftClass* objectClass = dynamic_cast<HLAMPAircraftClass*>(manager.getObjectClass("MPAircraft"));
-        if (!objectClass)
-            return;
-        _objectInstance = new HLAMPAircraft(objectClass);
-        if (!_objectInstance.valid())
-            return;
-        _objectInstance->registerInstance();
-        _objectInstance->setModelPath("Aircraft/ogel/Models/SinglePiston.xml");
-
         manager.schedule(*this, getSimTime() + SGTimeStamp::fromSecMSec(0, 1));
     }
 
@@ -355,15 +344,12 @@ public:
 
         _objectInstance->setLocation(getPhysics());
         _objectInstance->setSimTime(getSimTime().toSecs());
-        _objectInstance->updateAttributeValues(getSimTime(), simgear::RTIData("update"));
 
         manager.schedule(*this, getSimTime() + SGTimeStamp::fromSecMSec(0, 100));
     }
 
     virtual void shutdown(AIManager& manager)
     {
-        if (_objectInstance.valid())
-            _objectInstance->removeInstance(simgear::RTIData("shutdown"));
         _objectInstance = 0;
         AIObject::shutdown(manager);
     }
@@ -373,7 +359,6 @@ private:
     double _radius;
     double _turnaroundTime;
     double _velocity;
-    SGSharedPtr<HLAMPAircraft> _objectInstance;
 };
 
 /// an ogle in a traffic circuit at lowi
@@ -468,16 +453,6 @@ public:
         physics->_waypoints.push_back(SGVec3d::fromGeod(startDescend));
         setPhysics(physics);
 
-        /// Ok, this is part of the official sketch
-        HLAMPAircraftClass* objectClass = dynamic_cast<HLAMPAircraftClass*>(manager.getObjectClass("MPAircraft"));
-        if (!objectClass)
-            return;
-        _objectInstance = new HLAMPAircraft(objectClass);
-        if (!_objectInstance.valid())
-            return;
-        _objectInstance->registerInstance();
-        _objectInstance->setModelPath("Aircraft/ogel/Models/SinglePiston.xml");
-
         /// Need to schedule something else we get deleted
         manager.schedule(*this, getSimTime() + SGTimeStamp::fromSecMSec(0, 100));
     }
@@ -498,7 +473,6 @@ public:
 
         _objectInstance->setLocation(getPhysics());
         _objectInstance->setSimTime(getSimTime().toSecs());
-        _objectInstance->updateAttributeValues(getSimTime(), simgear::RTIData("update"));
 
         /// Need to schedule something else we get deleted
         manager.schedule(*this, getSimTime() + SGTimeStamp::fromSecMSec(0, 100));
@@ -506,15 +480,10 @@ public:
 
     virtual void shutdown(AIManager& manager)
     {
-        if (_objectInstance.valid())
-            _objectInstance->removeInstance(simgear::RTIData("shutdown"));
         _objectInstance = 0;
 
         AIObject::shutdown(manager);
     }
-
-private:
-    SGSharedPtr<HLAMPAircraft> _objectInstance;
 };
 
 } // namespace fgai
@@ -592,7 +561,6 @@ main(int argc, char* argv[])
 
     if (manager->getFederationObjectModel().empty()) {
         SGPath path(fg_root);
-        path.append("HLA");
         path.append("fg-local-fom.xml");
         manager->setFederationObjectModel(path.local8BitStr());
     }

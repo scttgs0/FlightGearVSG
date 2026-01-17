@@ -55,12 +55,6 @@ Viewer::Viewer(ArgumentParser& arguments) :
 Viewer::~Viewer()
 {
     stopThreading();
-
-#if FG_HAVE_HLA
-    if (_viewerFederate.valid())
-        _viewerFederate->shutdown();
-    _viewerFederate = 0;
-#endif
 }
 
 bool
@@ -477,26 +471,6 @@ Viewer::advance(double)
 void
 Viewer::updateTraversal()
 {
-#if FG_HAVE_HLA
-    if (_viewerFederate.valid()) {
-        if (_timeIncrement == SGTimeStamp::fromSec(0)) {
-            if (!_viewerFederate->timeAdvanceAvailable()) {
-                SG_LOG(SG_NETWORK, SG_ALERT, "Got error from federate update!");
-                _viewerFederate->shutdown();
-                _viewerFederate = 0;
-            }
-        } else {
-            osg::FrameStamp* frameStamp = getViewerFrameStamp();
-            SGTimeStamp timeStamp = SGTimeStamp::fromSec(frameStamp->getSimulationTime());
-            if (!_viewerFederate->timeAdvance(timeStamp)) {
-                SG_LOG(SG_NETWORK, SG_ALERT, "Got error from federate update!");
-                _viewerFederate->shutdown();
-                _viewerFederate = 0;
-            }
-        }
-    }
-#endif
-
     osgViewer::Viewer::updateTraversal();
 
     if (!_renderer->update(*this)) {
@@ -733,34 +707,5 @@ Viewer::createGraphicsContext(osg::GraphicsContext::Traits* traits)
 
     return graphicsContext;
 }
-
-#if FG_HAVE_HLA
-const HLAViewerFederate*
-Viewer::getViewerFederate() const
-{
-    return _viewerFederate.get();
-}
-
-HLAViewerFederate*
-Viewer::getViewerFederate()
-{
-    return _viewerFederate.get();
-}
-
-void
-Viewer::setViewerFederate(HLAViewerFederate* viewerFederate)
-{
-    if (!viewerFederate) {
-        SG_LOG(SG_VIEW, SG_ALERT, "Viewer::setViewerFederate(): Setting the viewer federate to zero is not supported!");
-        return;
-    }
-    if (_viewerFederate.valid()) {
-        SG_LOG(SG_VIEW, SG_ALERT, "Viewer::setViewerFederate(): Setting the viewer federate twice is not supported!");
-        return;
-    }
-    _viewerFederate = viewerFederate;
-    _viewerFederate->attachToViewer(this);
-}
-#endif
 
 } // namespace fgviewer

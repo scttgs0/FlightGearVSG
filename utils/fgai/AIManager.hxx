@@ -17,19 +17,16 @@
 #ifndef AIManager_hxx
 #define AIManager_hxx
 
-#include <simgear/hla/HLAFederate.hxx>
 #include "AIBVHPager.hxx"
 
 namespace fgai {
 
 class AIObject;
 
-class AIManager : public simgear::HLAFederate {
+class AIManager {
 public:
     AIManager();
     virtual ~AIManager();
-
-    virtual simgear::HLAObjectClass* createObjectClass(const std::string& name);
 
     virtual bool init();
     virtual bool update();

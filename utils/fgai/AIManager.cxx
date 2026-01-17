@@ -22,11 +22,6 @@
 
 #include <cassert>
 
-#include "HLAAirVehicleClass.hxx"
-#include "HLAAircraftClass.hxx"
-#include "HLABaloonClass.hxx"
-#include "HLAMPAircraftClass.hxx"
-
 #include "AIObject.hxx"
 
 namespace fgai {
@@ -48,33 +43,9 @@ AIManager::~AIManager()
 {
 }
 
-simgear::HLAObjectClass*
-AIManager::createObjectClass(const std::string& name)
-{
-    // Just there for demonstration.
-    if (name == "MPAircraft")
-        return new HLAMPAircraftClass(name, this);
-
-    // These should be the future objects
-    // The air vehicle should be the one an atc looks at
-    if (name == "AirVehicle")
-        return new HLAAirVehicleClass(name, this);
-    // An aircraft with wings and that
-    if (name == "Aircraft")
-        return new HLAAircraftClass(name, this);
-    // A hot air baloon ...
-    if (name == "Baloon")
-        return new HLABaloonClass(name, this);
-
-    return 0;
-}
-
 bool
 AIManager::init()
 {
-    if (!simgear::HLAFederate::init())
-        return false;
-
     SGTimeStamp federateTime;
     queryFederateTime(federateTime);
     _simTime = federateTime + getLeadTime();
@@ -160,10 +131,6 @@ AIManager::shutdown()
             continue;
         object->shutdown(*this);
     }
-
-    // Then do the hla shutdown part
-    if (!simgear::HLAFederate::shutdown())
-        return false;
 
     // Expire bounding volume nodes
     _pager.update(0);

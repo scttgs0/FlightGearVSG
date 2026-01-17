@@ -83,10 +83,6 @@ if (CycloneDDS_FOUND)
   add_subdirectory(DDS)
 endif()
 
-if(RTI_FOUND)
-  add_subdirectory(HLA)
-endif()
-
 add_subdirectory(http)
 
 if(ENABLE_SWIFT)

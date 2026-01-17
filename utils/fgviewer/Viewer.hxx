@@ -32,10 +32,6 @@
 #include "SlaveCamera.hxx"
 #include "ArgumentParser.hxx"
 
-#if FG_HAVE_HLA
-#include "HLAViewerFederate.hxx"    
-#endif
-
 namespace fgviewer  {
 
 class Viewer : public osgViewer::Viewer {
@@ -105,13 +101,6 @@ public:
     /// Helper to create an new graphics context from traits.
     osg::GraphicsContext* createGraphicsContext(osg::GraphicsContext::Traits* traits);
 
-#if FG_HAVE_HLA
-    /// The federate if configured, can only be set once
-    const HLAViewerFederate* getViewerFederate() const;
-    HLAViewerFederate* getViewerFederate();
-    void setViewerFederate(HLAViewerFederate* viewerFederate);
-#endif
-
 private:
     Viewer(const Viewer&);
     Viewer& operator=(const Viewer&);
@@ -146,11 +135,6 @@ private:
     SGTimeStamp _timeIncrement;
     /// The current simulation time of the viewer
     SGTimeStamp _simTime;
-
-#if FG_HAVE_HLA
-    /// The federate if configured
-    SGSharedPtr<HLAViewerFederate> _viewerFederate;
-#endif
 };
 
 } // namespace fgviewer

@@ -26,11 +26,6 @@
 
 #include "Viewer.hxx"
 
-#if FG_HAVE_HLA
-#include "HLAViewerFederate.hxx"    
-#include "HLAPerspectiveViewer.hxx"    
-#endif
-
 namespace fgviewer  {
 
 class NoUpdateCallback : public osg::NodeCallback {
@@ -203,49 +198,19 @@ SlaveCamera::setMonitorProjectionReferences(double width, double height,
 osg::Vec3
 SlaveCamera::getLeftEyeOffset(const Viewer& viewer) const
 {
-#if FG_HAVE_HLA
-    const HLAViewerFederate* viewerFederate = viewer.getViewerFederate();
-    if (!viewerFederate)
-        return osg::Vec3(0, 0, 0);
-    const HLAPerspectiveViewer* perspectiveViewer = viewerFederate->getViewer();
-    if (!perspectiveViewer)
-        return osg::Vec3(0, 0, 0);
-    return toOsg(perspectiveViewer->getLeftEyeOffset());
-#else
     return osg::Vec3(0, 0, 0);
-#endif
 }
 
 osg::Vec3
 SlaveCamera::getRightEyeOffset(const Viewer& viewer) const
 {
-#if FG_HAVE_HLA
-    const HLAViewerFederate* viewerFederate = viewer.getViewerFederate();
-    if (!viewerFederate)
-        return osg::Vec3(0, 0, 0);
-    const HLAPerspectiveViewer* perspectiveViewer = viewerFederate->getViewer();
-    if (!perspectiveViewer)
-        return osg::Vec3(0, 0, 0);
-    return toOsg(perspectiveViewer->getRightEyeOffset());
-#else
     return osg::Vec3(0, 0, 0);
-#endif
 }
 
 double
 SlaveCamera::getZoomFactor(const Viewer& viewer) const
 {
-#if FG_HAVE_HLA
-    const HLAViewerFederate* viewerFederate = viewer.getViewerFederate();
-    if (!viewerFederate)
-        return 1;
-    const HLAPerspectiveViewer* perspectiveViewer = viewerFederate->getViewer();
-    if (!perspectiveViewer)
-        return 1;
-    return perspectiveViewer->getZoomFactor();
-#else
     return 1;
-#endif
 }
 
 osg::Matrix
