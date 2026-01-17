@@ -1,5 +1,4 @@
-#ifndef RECENTLOCATIONSMODEL_HXX
-#define RECENTLOCATIONSMODEL_HXX
+#pragma once
 
 #include <QAbstractListModel>
 #include <QVariantList>
@@ -36,5 +35,3 @@ signals:
 private:
     QVariantList m_data;
 };
-
-#endif // RECENTLOCATIONSMODEL_HXX

@@ -18,8 +18,7 @@
 //
 //  $Id: panel_io.hxx,v 1.2 2016/07/20 22:01:32 allaert Exp $
 
-#ifndef __PANEL_IO_HXX
-#define __PANEL_IO_HXX
+#pragma once
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -38,5 +37,3 @@ public:
 
     static SGSharedPtr<FGPanel> read (SGPropertyNode_ptr root);
 };
-
-#endif // __PANEL_IO_HXX

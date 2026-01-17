@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef LAUNCHER_MAIN_WINDOW_HXX
-#define LAUNCHER_MAIN_WINDOW_HXX
+#pragma once
 
 #include <QScopedPointer>
 #include <QStringList>
@@ -60,5 +59,3 @@ private:
     LauncherController* m_controller;
     QmlColoredImageProvider* m_coloredIconProvider;
 };
-
-#endif // of LAUNCHER_MAIN_WINDOW_HXX

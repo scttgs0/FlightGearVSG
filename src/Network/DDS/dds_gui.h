@@ -7,10 +7,9 @@
 
 *****************************************************************/
 
-#include "dds/ddsc/dds_public_impl.h"
+#pragma once
 
-#ifndef _DDSL_DDS_GUI_H_
-#define _DDSL_DDS_GUI_H_
+#include "dds/ddsc/dds_public_impl.h"
 
 
 #ifdef __cplusplus
@@ -58,4 +57,3 @@ dds_sample_free ((d), &FG_DDS_GUI_desc, (o))
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DDSL_DDS_GUI_H_ */

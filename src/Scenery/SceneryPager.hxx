@@ -18,8 +18,8 @@
 //
 // $Id$
 
-#ifndef FLIGHTGEAR_SCENERYPAGERHXX
-#define FLIGHTGEAR_SCENERYPAGERHXX 1
+#pragma once
+
 #include <string>
 #include <vector>
 
@@ -81,4 +81,3 @@ protected:
     virtual ~SceneryPager();
 };
 }
-#endif

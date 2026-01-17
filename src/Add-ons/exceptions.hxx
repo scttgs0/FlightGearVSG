@@ -17,20 +17,13 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef FG_ADDON_EXCEPTIONS_HXX
-#define FG_ADDON_EXCEPTIONS_HXX
+#pragma once
 
 #include <string>
 
 #include <simgear/structure/exception.hxx>
 
-namespace flightgear
-{
-
-namespace addons
-{
-
-namespace errors
+namespace flightgear::addons::errors
 {
 
 class error : public sg_exception
@@ -68,10 +61,4 @@ class invalid_resource_path : public error
 class unable_to_create_addon_storage_dir : public error
 { using error::error; };
 
-} // of namespace errors
-
-} // of namespace addons
-
-} // of namespace flightgear
-
-#endif  // of FG_ADDON_EXCEPTIONS_HXX
+} // of namespace flightgear::addons::errors

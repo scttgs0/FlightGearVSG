@@ -20,8 +20,7 @@
 //
 // $Id$
 
-#ifndef _GROUNDCACHE_HXX
-#define _GROUNDCACHE_HXX
+#pragma once
 
 #include <simgear/compiler.h>
 #include <simgear/constants.h>
@@ -149,5 +148,3 @@ private:
     osg::ref_ptr<osg::Group> _group;
 #endif
 };
-
-#endif

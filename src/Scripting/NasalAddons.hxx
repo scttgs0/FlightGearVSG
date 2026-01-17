@@ -8,14 +8,9 @@
 
 #include <simgear/nasal/nasal.h>
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 void initAddonClassesForNasal(naRef globals, naContext c);
 
-} // of namespace addons
-
-} // namespace flightgear
+} // of namespace flightgear::addons

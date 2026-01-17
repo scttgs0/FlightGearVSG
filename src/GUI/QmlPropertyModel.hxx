@@ -14,8 +14,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef QmlPropertyModel_hpp
-#define QmlPropertyModel_hpp
+#pragma once
 
 #include <QAbstractListModel>
 #include <memory>
@@ -51,5 +50,3 @@ private:
     class PropertyModelPrivate;
     std::unique_ptr<PropertyModelPrivate> d;
 };
-
-#endif /* QmlPropertyModel_hpp */

@@ -16,10 +16,7 @@
 //
 // $Id$
 
-
-#ifndef _ADA_HXX
-#define _ADA_HXX
-
+#pragma once
 
 class SGSocket;
 
@@ -80,5 +77,3 @@ public:
     // Subsystem identification.
     static const char* staticSubsystemClassId() { return "ada"; }
 };
-
-#endif // _ADA_HXX

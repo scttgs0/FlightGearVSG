@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef GUI_CARRIER_DIAGRAM_HXX
-#define GUI_CARRIER_DIAGRAM_HXX
+#pragma once
 
 #include "BaseDiagram.hxx"
 #include "QmlPositioned.hxx"
@@ -76,5 +75,3 @@ private:
     bool m_abeam = false;
     QuantityValue m_offsetDistance;
 };
-
-#endif // of GUI_CARRIER_DIAGRAM_HXX

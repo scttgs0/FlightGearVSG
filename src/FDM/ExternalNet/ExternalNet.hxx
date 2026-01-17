@@ -20,8 +20,7 @@
 //
 // $Id$
 
-#ifndef _EXTERNAL_NET_HXX
-#define _EXTERNAL_NET_HXX
+#pragma once
 
 #include <simgear/timing/timestamp.hxx> // fine grained timing measurements
 #include <simgear/io/raw_socket.hxx>
@@ -61,5 +60,3 @@ public:
     // Subsystem identification.
     static const char* staticSubsystemClassId() { return "network"; }
 };
-
-#endif // _EXTERNAL_NET_HXX

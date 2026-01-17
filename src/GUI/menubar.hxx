@@ -1,7 +1,6 @@
 // menubar.hxx - XML-configured menu bar.
 
-#ifndef __MENUBAR_HXX
-#define __MENUBAR_HXX 1
+#pragma once
 
 #include <string>
 
@@ -73,5 +72,3 @@ public:
     static std::string getLocalizedLabel(SGPropertyNode* node);
 
 };
-
-#endif // __MENUBAR_HXX

@@ -21,9 +21,7 @@
 //
 // $Id$
 
-
-#ifndef _SPLASH_HXX
-#define _SPLASH_HXX
+#pragma once
 
 #include <config.h>
 
@@ -132,5 +130,3 @@ private:
 /** Set progress information.
  * "identifier" references an element of the language resource. */
 void fgSplashProgress ( const char *identifier, unsigned int percent = 0 );
-
-#endif // _SPLASH_HXX

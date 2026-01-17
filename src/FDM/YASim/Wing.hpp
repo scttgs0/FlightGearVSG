@@ -1,5 +1,4 @@
-#ifndef _WING_HPP
-#define _WING_HPP
+#pragma once
 
 #include "yasim-common.hpp"
 #include "Vector.hpp"
@@ -216,4 +215,3 @@ public:
 };
 
 }; // namespace yasim
-#endif // _WING_HPP

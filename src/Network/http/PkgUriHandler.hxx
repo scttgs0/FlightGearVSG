@@ -18,14 +18,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef __FG_PKG_URI_HANDLER_HXX
-#define __FG_PKG_URI_HANDLER_HXX
+#pragma once
 
 #include "urihandler.hxx"
 #include <simgear/props/props.hxx>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 class PkgUriHandler : public URIHandler {
 public:
@@ -34,7 +32,4 @@ public:
 private:
 };
 
-} // namespace http
-} // namespace flightgear
-
-#endif //#define __FG_PKG_URI_HANDLER_HXX
+} // namespace flightgear::http

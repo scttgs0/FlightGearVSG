@@ -37,8 +37,7 @@
 
 //#define MIRROR_DEBUG 1
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 using std::string;
 
@@ -506,5 +505,4 @@ void MirrorPropertyTreeWebsocket::poll(WebsocketWriter & writer)
     writer.writeText(json.dump());
 }
 
-} // namespace http
-} // namespace flightgear
+} // namespace flightgear::http

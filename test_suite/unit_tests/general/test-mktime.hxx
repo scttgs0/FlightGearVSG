@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_MKTIME_UNIT_TESTS_HXX
-#define _FG_MKTIME_UNIT_TESTS_HXX
-
+#pragma once
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -44,5 +41,3 @@ public:
     // The original test-mktime test.
     void testMktime();
 };
-
-#endif  // _FG_MKTIME_UNIT_TESTS_HXX

@@ -4,8 +4,7 @@
 // Improved by ThunderFly s.r.o. <info@thunderfly.cz>
 ////////////////////////////////////////////////////////
 
-#ifndef _ELECTRICENGINE_HPP
-#define _ELECTRICENGINE_HPP
+#pragma once
 
 #include "Engine.hpp"
 
@@ -41,4 +40,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _ELECTRICENGINE_HPP

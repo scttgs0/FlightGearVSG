@@ -22,9 +22,7 @@
 // Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-
-#ifndef _FG_LFSGlass_HXX
-#define _FG_LFSGlass_HXX
+#pragma once
 
 #include <simgear/compiler.h>
 
@@ -155,8 +153,3 @@ public:
 
     void collect_data(FGLFSGlassData *data );
 };
-
-#endif // _FG_LFSGlass_HXX
-
-
-

@@ -1,5 +1,4 @@
-#ifndef _SURFACE_HPP
-#define _SURFACE_HPP
+#pragma once
 
 #include <simgear/props/props.hxx>
 #include "Version.hpp"
@@ -155,4 +154,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _SURFACE_HPP

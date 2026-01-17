@@ -17,8 +17,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef FG_ADDONVERSION_HXX
-#define FG_ADDONVERSION_HXX
+#pragma once
 
 #include <ostream>
 #include <string>
@@ -31,10 +30,7 @@
 
 #include "addon_fwd.hxx"
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 // Order matters for the sorting/comparison functions
@@ -205,8 +201,4 @@ bool operator>=(const AddonVersion& lhs, const AddonVersion& rhs);
 
 std::ostream& operator<<(std::ostream&, const AddonVersion&);
 
-} // of namespace addons
-
-} // of namespace flightgear
-
-#endif  // of FG_ADDONVERSION_HXX
+} // of namespace flightgear::addons

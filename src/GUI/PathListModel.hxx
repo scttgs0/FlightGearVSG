@@ -1,5 +1,4 @@
-#ifndef PATHLISTMODEL_HXX
-#define PATHLISTMODEL_HXX
+#pragma once
 
 #include <vector>
 
@@ -52,5 +51,3 @@ private:
 
     std::vector<PathEntry> mPaths;
 };
-
-#endif // PATHLISTMODEL_HXX

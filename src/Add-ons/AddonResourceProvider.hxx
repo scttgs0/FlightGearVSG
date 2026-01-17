@@ -17,18 +17,14 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef FG_ADDON_RESOURCE_PROVIDER_HXX
-#define FG_ADDON_RESOURCE_PROVIDER_HXX
+#pragma once
 
 #include <string>
 
 #include <simgear/misc/ResourceManager.hxx>
 #include <simgear/misc/sg_path.hxx>
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 class ResourceProvider : public simgear::ResourceProvider
@@ -40,8 +36,4 @@ public:
     override;
 };
 
-} // of namespace addons
-
-} // of namespace flightgear
-
-#endif  // of FG_ADDON_RESOURCE_PROVIDER_HXX
+} // of namespace flightgear::addons

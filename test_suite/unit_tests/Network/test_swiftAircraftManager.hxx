@@ -3,9 +3,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef FLIGHTGEAR_TEST_SWIFTAIRCRAFTMANAGER_H
-#define FLIGHTGEAR_TEST_SWIFTAIRCRAFTMANAGER_H
-
+#pragma once
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
 
@@ -32,6 +30,3 @@ public:
     // Helper
     std::vector<SGSharedPtr<FGAIBase>> getAIList();
 };
-
-
-#endif //FLIGHTGEAR_TEST_SWIFTAIRCRAFTMANAGER_H

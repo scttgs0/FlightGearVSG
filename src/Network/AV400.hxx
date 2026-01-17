@@ -20,10 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _FG_AV400_HXX
-#define _FG_AV400_HXX
-
+#pragma once
 
 #include <simgear/compiler.h>
 
@@ -56,6 +53,3 @@ public:
     
   FlightProperties fdm;
 };
-
-
-#endif // _FG_AV400_HXX

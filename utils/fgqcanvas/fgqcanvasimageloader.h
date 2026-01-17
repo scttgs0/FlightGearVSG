@@ -15,8 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FGQCANVASIMAGELOADER_H
-#define FGQCANVASIMAGELOADER_H
+#pragma once
 
 #include <QObject>
 #include <QPixmap>
@@ -61,5 +60,3 @@ private:
     QList<QNetworkReply*> m_transfers;
 
 };
-
-#endif // FGQCANVASIMAGELOADER_H

@@ -20,9 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _FG_ATC_OUTPUTS_HXX
-#define _FG_ATC_OUTPUTS_HXX
+#pragma once
 
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
@@ -90,6 +88,3 @@ public:
 
     bool close();
 };
-
-
-#endif // _FG_ATC_OUTPUTS_HXX

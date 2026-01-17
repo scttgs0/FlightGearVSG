@@ -18,15 +18,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef __FG_SIMPLE_DOM_HXX
-#define __FG_SIMPLE_DOM_HXX
+#pragma once
 
 #include <string>
 #include <map>
 #include <vector>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 class DOMElement {
 public:
@@ -59,6 +57,4 @@ protected:
   Attributes_t _attributes;
 };
 
-}
-}
-#endif // __FG_SIMPLE_DOM_HXX
+} // namespace flightgear::http

@@ -20,8 +20,7 @@
 //
 // $Id$
 
-#ifndef FG_FLIGHT_PROPERTIES_HXX
-#define FG_FLIGHT_PROPERTIES_HXX
+#pragma once
 
 #include <cstring>
 #include <cmath>
@@ -122,5 +121,3 @@ public:
 private:
   SGPropertyNode* _root;
 };
-
-#endif // of FG_FLIGHT_PROPERTIES_HXX

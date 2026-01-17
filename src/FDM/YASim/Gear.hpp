@@ -1,5 +1,5 @@
-#ifndef _GEAR_HPP
-#define _GEAR_HPP
+#pragma once
+
 #include "Math.hpp"
 
 #include <functional>
@@ -266,4 +266,3 @@ bool gearCompressionOld(
         );
 
 }; // namespace yasim
-#endif // _GEAR_HPP

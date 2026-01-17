@@ -21,8 +21,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef _XMLAUTO_HXX
-#define _XMLAUTO_HXX 1
+#pragma once
 
 /**
  * @brief Model an autopilot system by implementing a SGSubsystemGroup
@@ -43,5 +42,3 @@ public:
 protected:
     FGXMLAutopilotGroup() : SGSubsystemGroup() {}
 };
-
-#endif // _XMLAUTO_HXX

@@ -52,10 +52,7 @@ using std::vector;
 using std::shared_ptr;
 using std::unique_ptr;
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 static unique_ptr<AddonManager> staticInstance;
@@ -291,6 +288,4 @@ AddonManager::addAddonMenusToFGMenubar() const
   }
 }
 
-} // of namespace addons
-
-} // of namespace flightgear
+} // of namespace flightgear::addons

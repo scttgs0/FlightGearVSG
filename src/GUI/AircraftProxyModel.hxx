@@ -1,8 +1,7 @@
 // SPDX-FileCopyrightText: 2020 James Turner
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef AIRCRAFTSEARCHFILTERMODEL_HXX
-#define AIRCRAFTSEARCHFILTERMODEL_HXX
+#pragma once
 
 #include <QSortFilterProxyModel>
 #include <QUrl>
@@ -93,5 +92,3 @@ private:
     QString m_filterString;
     SGPropertyNode_ptr m_filterProps;
 };
-
-#endif // AIRCRAFTSEARCHFILTERMODEL_HXX

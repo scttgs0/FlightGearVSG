@@ -20,10 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _TERRAIN_PGT_HXX
-#define _TERRAIN_PGT_HXX
-
+#pragma once
 
 #ifndef __cplusplus                                                          
 # error This library requires C++
@@ -123,5 +120,3 @@ private:
 
     SGDemPtr _dem;
 };
-
-#endif // _TERRAIN_PGT_HXX

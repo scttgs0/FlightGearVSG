@@ -49,10 +49,7 @@ namespace strutils = simgear::strutils;
 using std::string;
 using std::vector;
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 // ***************************************************************************
@@ -511,6 +508,4 @@ std::ostream& operator<<(std::ostream& os, const Addon& addon)
   return os << addon.str();
 }
 
-} // of namespace addons
-
-} // of namespace flightgear
+} // of namespace flightgear::addons

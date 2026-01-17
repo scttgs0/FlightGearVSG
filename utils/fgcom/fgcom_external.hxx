@@ -25,8 +25,7 @@
  *
  */
 
-#ifndef __FGCOM_H__
-#define __FGCOM_H__
+#pragma once
 
 // avoid name clash with winerror.h
 #define FGC_SUCCESS(__x__)		(__x__ == 0)
@@ -119,5 +118,3 @@ int  iaxc_callback(iaxc_event e);
 void lib_setSilenceThreshold(double thd);
 void lib_setCallerId(std::string callsign);
 void lib_setVolume(double input, double output);
-
-#endif

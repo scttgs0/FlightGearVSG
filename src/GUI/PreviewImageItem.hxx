@@ -1,5 +1,4 @@
-#ifndef PREVIEW_IMAGEITEM_HXX
-#define PREVIEW_IMAGEITEM_HXX
+#pragma once
 
 #include <memory>
 
@@ -66,5 +65,3 @@ private:
     unsigned int m_downloadRetryCount = 0;
     bool m_requestActive = false;
 };
-
-#endif // PREVIEW_IMAGEITEM_HXX

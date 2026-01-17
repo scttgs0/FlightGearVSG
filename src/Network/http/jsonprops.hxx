@@ -11,8 +11,7 @@
 #include <simgear/props/props.hxx>
 #include <string>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 class JSON {
 public:
@@ -26,5 +25,4 @@ public:
     static void addChildrenToProp(const nlohmann::json& json, SGPropertyNode_ptr base);
 };
 
-}  // namespace http
-} // namespace flightgear
+}  // namespace flightgear::http

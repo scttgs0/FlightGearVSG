@@ -19,8 +19,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
-#ifndef PIXMAPIMAGEITEM_HXX
-#define PIXMAPIMAGEITEM_HXX
+#pragma once
 
 #include <QQuickPaintedItem>
 #include <QImage>
@@ -46,5 +45,3 @@ signals:
 private:
     QImage _image;
 };
-
-#endif // PIXMAPIMAGEITEM_HXX

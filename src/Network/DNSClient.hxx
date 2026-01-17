@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FG_DNS_CLIENT_HXX
-#define FG_DNS_CLIENT_HXX
+#pragma once
 
 #include <simgear/structure/subsystem_mgr.hxx>
 #include <simgear/io/DNSClient.hxx>
@@ -49,7 +48,3 @@ private:
     bool _inited;
     std::unique_ptr<simgear::DNS::Client> _dns;
 };
-
-#endif // FG_DNS_CLIENT_HXX
-
-

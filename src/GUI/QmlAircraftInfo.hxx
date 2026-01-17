@@ -1,8 +1,7 @@
 // SPDX-FileCopyrightText: 2018 James Turner
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef QMLAIRCRAFTINFO_HXX
-#define QMLAIRCRAFTINFO_HXX
+#pragma once
 
 #include <memory>
 
@@ -218,5 +217,3 @@ private:
     /// parsed contents of the -set.xml.
     mutable SGPropertyNode_ptr _cachedProps;
 };
-
-#endif // QMLAIRCRAFTINFO_HXX

@@ -17,8 +17,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef FG_ADDON_HXX
-#define FG_ADDON_HXX
+#pragma once
 
 #include <map>
 #include <ostream>
@@ -36,10 +35,7 @@
 #include "AddonVersion.hxx"
 #include "pointer_traits.hxx"
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 enum class UrlType {
@@ -260,8 +256,4 @@ public:
 
 std::ostream& operator<<(std::ostream& os, const Addon& addon);
 
-} // of namespace addons
-
-} // of namespace flightgear
-
-#endif  // of FG_ADDON_HXX
+} // of namespace flightgear::addons

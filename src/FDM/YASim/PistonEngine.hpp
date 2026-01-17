@@ -1,5 +1,4 @@
-#ifndef _PISTONENGINE_HPP
-#define _PISTONENGINE_HPP
+#pragma once
 
 #include "Engine.hpp"
 
@@ -62,4 +61,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _PISTONENGINE_HPP

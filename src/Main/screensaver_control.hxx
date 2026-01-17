@@ -5,4 +5,6 @@
 // SPDX-FileCopyrightText: 2013 Rebecca Palmer
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#pragma once
+
 void fgOSDisableScreensaver();

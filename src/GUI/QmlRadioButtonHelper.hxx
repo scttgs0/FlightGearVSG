@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef QMLRADIOBUTTONHELPER_HXX
-#define QMLRADIOBUTTONHELPER_HXX
+#pragma once
 
 #include <QObject>
 #include <QtQml>
@@ -74,5 +73,3 @@ private:
 };
 
 QML_DECLARE_TYPEINFO(QmlRadioButtonGroup, QML_HAS_ATTACHED_PROPERTIES)
-
-#endif // QMLRADIOBUTTONHELPER_HXX

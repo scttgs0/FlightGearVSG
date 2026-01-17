@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef NAVAIDSEARCHMODEL_HXX
-#define NAVAIDSEARCHMODEL_HXX
+#pragma once
 
 #include <QAbstractListModel>
 
@@ -110,6 +109,3 @@ private:
     int m_maxResults = 0;
     QScopedPointer<flightgear::NavDataCache::ThreadedGUISearch> m_search;
 };
-
-
-#endif // NAVAIDSEARCHMODEL_HXX

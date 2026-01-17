@@ -18,15 +18,11 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef FG_ADDON_FWD_HXX
-#define FG_ADDON_FWD_HXX
+#pragma once
 
 #include <simgear/structure/SGSharedPtr.hxx>
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 class Addon;
@@ -65,8 +61,4 @@ class unable_to_create_addon_storage_dir;
 
 } // of namespace errors
 
-} // of namespace addons
-
-} // of namespace flightgear
-
-#endif  // of FG_ADDON_FWD_HXX
+} // of namespace flightgear::addons

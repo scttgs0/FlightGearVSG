@@ -14,8 +14,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef CAMERAGROUP_HXX
-#define CAMERAGROUP_HXX 1
+#pragma once
 
 #include <map>
 #include <string>
@@ -287,5 +286,3 @@ void warpGUIPointer(CameraGroup* cgroup, int x, int y);
 void reloadCompositors(CameraGroup *cgroup);
 
 }
-
-#endif

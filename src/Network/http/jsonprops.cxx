@@ -14,8 +14,7 @@
 #include <simgear/misc/strutils.hxx>
 #include <simgear/math/SGMath.hxx>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 using nlohmann::json;
 using std::string;
@@ -180,5 +179,4 @@ string JSON::toJsonString(bool indent, SGPropertyNode_ptr n, int depth, double t
     return j.dump(indent, ' ', false, nlohmann::detail::error_handler_t::replace);
 }
 
-}  // namespace http
-} // namespace flightgear
+}  // namespace flightgear::http

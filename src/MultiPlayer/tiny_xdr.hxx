@@ -13,8 +13,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#ifndef TINY_XDR_HEADER
-#define TINY_XDR_HEADER
+#pragma once
 
 #if defined HAVE_CONFIG_H
 #   include <config.h>
@@ -76,5 +75,3 @@ float           XDR_decode_float    ( const xdr_data_t & f_Val );
 /* double */
 xdr_data2_t     XDR_encode_double   ( const double & d_Val );
 double          XDR_decode_double   ( const xdr_data2_t & d_Val );
-
-#endif

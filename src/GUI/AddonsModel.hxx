@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FG_GUI_METADATA_LIST_MODEL
-#define FG_GUI_METADATA_LIST_MODEL
+#pragma once
 
 #include <QAbstractListModel>
 #include <QDateTime>
@@ -126,5 +125,3 @@ private:
     QHash<int, QByteArray> m_roleToName;
     QHash<QString, int> m_nameToRole;
 };
-
-#endif // of Metadata_LIST_MODEL

@@ -17,8 +17,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef _FGRCC_HXX_
-#define _FGRCC_HXX_
+#pragma once
 
 #include <ios>
 #include <iosfwd>
@@ -179,5 +178,3 @@ private:
   // Holds the resulting structured data once the parsing is finished
   std::vector<ResourceDeclaration> _resourceDeclarations;
 };
-
-#endif  // _FGRCC_HXX_

@@ -1,5 +1,4 @@
-#ifndef _GLUE_HPP
-#define _GLUE_HPP
+#pragma once
 
 #include "BodyEnvironment.hpp"
 
@@ -33,4 +32,3 @@ public:
 };
 
 }; // namespace yasim
-#endif // _GLUE_HPP

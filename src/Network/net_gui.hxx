@@ -7,9 +7,7 @@
 //
 // $Id$
 
-
-#ifndef _NET_GUI_HXX
-#define _NET_GUI_HXX
+#pragma once
 
 #include <simgear/misc/stdint.hxx>
 
@@ -79,6 +77,3 @@ public:
     float course_deviation_deg; // degrees off target course
     float gs_deviation_deg;     // degrees off target glide slope
 };
-
-
-#endif // _NET_GUI_HXX

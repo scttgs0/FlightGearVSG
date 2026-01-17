@@ -1,5 +1,4 @@
-#ifndef _MODEL_HPP
-#define _MODEL_HPP
+#pragma once
 
 #include "Integrator.hpp"
 #include "RigidBody.hpp"
@@ -139,4 +138,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _MODEL_HPP

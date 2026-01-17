@@ -15,8 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef APPLICATIONCONTROLLER_H
-#define APPLICATIONCONTROLLER_H
+#pragma once
 
 #include <QObject>
 #include <QAbstractListModel>
@@ -205,5 +204,3 @@ private:
     bool m_blockUIIdle = false;
     QTimer* m_uiIdleTimer;
 };
-
-#endif // APPLICATIONCONTROLLER_H

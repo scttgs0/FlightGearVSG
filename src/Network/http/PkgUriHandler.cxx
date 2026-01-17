@@ -57,8 +57,7 @@ static json PackageToJson(simgear::pkg::Package* p)
 }
 
 
-namespace simgear {
-namespace pkg {
+namespace simgear::pkg {
 
 // Nlohmann needs adpaters defined in the classes' namespace
 void to_json(json& j, const PackageRef& p)
@@ -82,11 +81,9 @@ void to_json(json& j, const CatalogRef& c)
         {"installed", c->installedPackages()}};
 }
 
-} // namespace pkg
-} // namespace simgear
+} // namespace simgear::pkg
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 /*
 url: /pkg/command/args
@@ -194,6 +191,4 @@ bool PkgUriHandler::handleRequest( const HTTPRequest & request, HTTPResponse & r
   return true; 
 }
 
-} // namespace http
-} // namespace flightgear
-
+} // namespace flightgear::http

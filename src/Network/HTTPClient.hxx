@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FG_HTTP_CLIENT_HXX
-#define FG_HTTP_CLIENT_HXX
+#pragma once
 
 #include <simgear/io/HTTPClient.hxx>
 #include <simgear/package/Catalog.hxx>
@@ -61,7 +60,3 @@ private:
     bool _inited;
     std::unique_ptr<simgear::HTTP::Client> _http;
 };
-
-#endif // FG_HTTP_CLIENT_HXX
-
-

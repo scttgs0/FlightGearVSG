@@ -34,8 +34,7 @@ using std::string;
 using std::map;
 using std::vector;
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 // copied from http://stackoverflow.com/a/24315631
 static void ReplaceAll(std::string & str, const std::string & from, const std::string & to) 
@@ -406,6 +405,4 @@ bool PropertyUriHandler::handleGetRequest( const HTTPRequest & request, HTTPResp
 
 }
 
-} // namespace http
-} // namespace flightgear
-
+} // namespace flightgear::http

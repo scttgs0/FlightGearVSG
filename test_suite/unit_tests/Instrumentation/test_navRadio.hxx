@@ -17,9 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_NAVRADIO_UNIT_TESTS_HXX
-#define _FG_NAVRADIO_UNIT_TESTS_HXX
+#pragma once
 
 #include <memory>
 #include <string>
@@ -86,6 +84,3 @@ public:
 
     void testVORSignalQuality();
 };
-
-
-#endif  // _FG_NAVRADIO_UNIT_TESTS_HXX

@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef QMLPOSITIONED_HXX
-#define QMLPOSITIONED_HXX
+#pragma once
 
 #include <QObject>
 
@@ -192,5 +191,3 @@ private:
 };
 
 bool operator==(const QmlPositioned& p1, const QmlPositioned& p2);
-
-#endif // QMLPOSITIONED_HXX

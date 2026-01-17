@@ -14,8 +14,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef AIEnvironment_hxx
-#define AIEnvironment_hxx
+#pragma once
 
 #include <simgear/bvh/BVHNode.hxx>
 #include <simgear/math/SGGeometry.hxx>
@@ -44,5 +43,3 @@ public:
 };
 
 } // namespace fgai
-
-#endif

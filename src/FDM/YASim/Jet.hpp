@@ -1,5 +1,4 @@
-#ifndef _JET_HPP
-#define _JET_HPP
+#pragma once
 
 #include "Thruster.hpp"
 
@@ -91,4 +90,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _JET_HPP

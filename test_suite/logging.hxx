@@ -18,10 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_TEST_SUITE_LOGGING_HXX
-#define _FG_TEST_SUITE_LOGGING_HXX
-
+#pragma once
 
 #include <sstream>
 
@@ -95,6 +92,3 @@ void setupLogging(sgDebugClass, sgDebugPriority, bool);
 
 // Deactivate all the simgear logging priority IO captures.
 void stopLogging();
-
-
-#endif  // _FG_TEST_SUITE_LOGGING_HXX

@@ -20,10 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _TERRAIN_STG_HXX
-#define _TERRAIN_STG_HXX
-
+#pragma once
 
 #ifndef __cplusplus                                                          
 # error This library requires C++
@@ -120,7 +117,3 @@ private:
     
     bool _inited;
 };
-
-#endif // _TERRAIN_STG_HXX
-
-

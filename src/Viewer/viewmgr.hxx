@@ -20,9 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _VIEWMGR_HXX
-#define _VIEWMGR_HXX
+#pragma once
 
 #include <vector>
 
@@ -150,5 +148,3 @@ private:
 
     std::unique_ptr<simgear::VideoEncoder>  _video_encoder;
 };
-
-#endif // _VIEWMGR_HXX

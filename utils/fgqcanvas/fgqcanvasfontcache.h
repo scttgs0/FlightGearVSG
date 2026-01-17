@@ -15,8 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FGQCANVASFONTCACHE_H
-#define FGQCANVASFONTCACHE_H
+#pragma once
 
 #include <QObject>
 #include <QFont>
@@ -55,5 +54,3 @@ private:
 
     QList<QNetworkReply*> m_transfers;
 };
-
-#endif // FGQCANVASFONTCACHE_H

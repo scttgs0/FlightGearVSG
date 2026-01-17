@@ -17,8 +17,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef FG_ADDON_CONTACTS_HXX
-#define FG_ADDON_CONTACTS_HXX
+#pragma once
 
 #include <string>
 
@@ -31,10 +30,7 @@ namespace nasal
   class Hash;                   // forward declaration
 };
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 enum class ContactType {
@@ -119,8 +115,4 @@ struct contact_traits<Maintainer>
   }
 };
 
-} // of namespace addons
-
-} // of namespace flightgear
-
-#endif  // of FG_ADDON_CONTACTS_HXX
+} // of namespace flightgear::addons

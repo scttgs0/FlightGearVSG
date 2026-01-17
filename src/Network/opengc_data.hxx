@@ -27,8 +27,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef _OPENGC_DATA_HXX
-#define _OPENGC_DATA_HXX
+#pragma once
 
 #ifndef __cplusplus
 # error This library requires C++
@@ -135,5 +134,3 @@ public:
 		double wind_dir;
 		double sea_level_pressure;
 };
-
-#endif // _OPENGC_HXX

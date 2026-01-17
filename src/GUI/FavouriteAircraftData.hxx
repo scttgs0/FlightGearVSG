@@ -1,5 +1,4 @@
-#ifndef FAVOURITEAIRCRAFTDATA_HXX
-#define FAVOURITEAIRCRAFTDATA_HXX
+#pragma once
 
 #include <QObject>
 #include <QUrl>
@@ -27,5 +26,3 @@ private:
     QVector<QUrl> m_favourites;
 
 };
-
-#endif // FAVOURITEAIRCRAFTDATA_HXX

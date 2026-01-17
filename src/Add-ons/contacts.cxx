@@ -31,10 +31,7 @@
 using std::string;
 using simgear::enumValue;
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 // ***************************************************************************
@@ -122,6 +119,4 @@ void Maintainer::setupGhost(nasal::Hash& addonsModule)
     .bases<ContactRef>();
 }
 
-} // of namespace addons
-
-} // of namespace flightgear
+} // of namespace flightgear::addons

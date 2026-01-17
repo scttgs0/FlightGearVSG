@@ -1,3 +1,6 @@
+
+#pragma once
+
 namespace yasim {
 
 class Turbulence {
@@ -29,4 +32,4 @@ private:
     unsigned char* _data;
 };
 
-}; // namespace yasim
+} // namespace yasim

@@ -4,8 +4,7 @@
 // SPDX-FileCopyrightText: (C) 2017  Bertrand Coconnier  - bcoconni@users.sf.net
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef _FG_WAKEMESH_HXX
-#define _FG_WAKEMESH_HXX
+#pragma once
 
 #include <string>
 
@@ -40,5 +39,3 @@ protected:
 };
 
 typedef SGSharedPtr<WakeMesh> WakeMesh_ptr;
-
-#endif

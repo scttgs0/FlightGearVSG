@@ -1,3 +1,6 @@
+
+#pragma once
+
 const char* _positionsData[] = {
     "00C,122.800,37.20966141,-107.86583645,CTAFUNICOM,Animas Air Park",
     "00C,122.805,37.20966141,-107.86583645,CTAFUNICOM,Animas Air Park",

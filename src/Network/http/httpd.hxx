@@ -18,16 +18,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FG_HTTPD_HXX
-#define FG_HTTPD_HXX
+#pragma once
 
 #include <simgear/structure/subsystem_mgr.hxx>
 #include <simgear/props/props.hxx>
 
 
-namespace flightgear {
-
-namespace http {
+namespace flightgear::http {
 
 extern const char * PROPERTY_ROOT;
 
@@ -40,10 +37,4 @@ public:
     static FGHttpd * createInstance( SGPropertyNode_ptr configNode );
 };
 
-} // namespace http
-
-} // namespace flightgear
-
-#endif // FG_HTTPD_HXX
-
-
+} // namespace flightgear::http

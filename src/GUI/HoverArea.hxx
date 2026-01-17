@@ -1,5 +1,4 @@
-#ifndef HOVERAREA_HXX
-#define HOVERAREA_HXX
+#pragma once
 
 #include <QQuickItem>
 
@@ -27,5 +26,3 @@ protected:
 private:
     bool m_containsMouse = false;
 };
-
-#endif // HOVERAREA_HXX

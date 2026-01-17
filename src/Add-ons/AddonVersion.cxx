@@ -44,10 +44,7 @@ using simgear::enumValue;
 
 namespace strutils = simgear::strutils;
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 // ***************************************************************************
@@ -564,6 +561,4 @@ void AddonVersion::setupGhost(nasal::Hash& addonsModule)
     .method("greaterThanOrEqual", &AddonVersion::greaterThanOrEqual);
 }
 
-} // of namespace addons
-
-} // of namespace flightgear
+} // of namespace flightgear::addons

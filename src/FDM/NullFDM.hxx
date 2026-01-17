@@ -21,10 +21,7 @@
 //
 // $Id$
 
-
-#ifndef _NULLFDM_HXX
-#define _NULLFDM_HXX
-
+#pragma once
 
 #include "flight.hxx"
 
@@ -42,5 +39,3 @@ public:
     // Subsystem identification.
     static const char* staticSubsystemClassId() { return "null"; }
 };
-
-#endif // _NULLFDM_HXX

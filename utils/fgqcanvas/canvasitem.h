@@ -15,8 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef CANVASITEM_H
-#define CANVASITEM_H
+#pragma once
 
 #include <QQuickItem>
 #include "fgcanvaselement.h"
@@ -55,5 +54,3 @@ private:
     ReferenceFrame m_clipReferenceFrame = ReferenceFrame::GLOBAL;
     QQuickItem* m_clipReferenceFrameItem = nullptr;
 };
-
-#endif // CANVASITEM_H

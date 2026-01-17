@@ -19,8 +19,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef __TANK_PROPERTIES_HXX
-#define __TANK_PROPERTIES_HXX
+#pragma once
 
 #include <simgear/props/props.hxx>
 #include <simgear/props/tiedpropertylist.hxx>
@@ -107,5 +106,3 @@ public:
 private:
   simgear::TiedPropertyList _tiedProperties;
 };
-
-#endif // __TANK_PROPERTIES_HXX

@@ -43,8 +43,7 @@ using std::list;
 
 namespace sc = simgear::canvas;
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -584,5 +583,4 @@ bool ScreenshotUriHandler::poll(Connection * connection)
   return true; // done.
 }
 
-} // namespace http
-} // namespace flightgear
+} // namespace flightgear::http

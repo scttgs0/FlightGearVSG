@@ -1,5 +1,4 @@
-#ifndef _FGGROUND_HPP
-#define _FGGROUND_HPP
+#pragma once
 
 #include "Ground.hpp"
 
@@ -47,4 +46,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _FGGROUND_HPP

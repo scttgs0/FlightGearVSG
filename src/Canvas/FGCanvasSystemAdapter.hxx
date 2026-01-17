@@ -16,8 +16,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FG_CANVASSYSTEMADAPTER_HXX_
-#define FG_CANVASSYSTEMADAPTER_HXX_
+#pragma once
 
 #include <simgear/canvas/CanvasSystemAdapter.hxx>
 
@@ -35,5 +34,3 @@ namespace canvas
       simgear::HTTP::Client* getHTTPClient() const override;
   };
 }
-
-#endif /* FG_CANVASSYSTEMADAPTER_HXX_ */

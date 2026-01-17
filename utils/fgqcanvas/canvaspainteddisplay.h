@@ -15,8 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef CANVAS_PAINTED_DISPLAY_H
-#define CANVAS_PAINTED_DISPLAY_H
+#pragma once
 
 #include <memory>
 
@@ -75,5 +74,3 @@ private:
    // QQuickItem* m_rootItem = nullptr;
     QSizeF m_sourceSize;
 };
-
-#endif // CANVAS_PAINTED_DISPLAY_H

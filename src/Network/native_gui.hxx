@@ -20,10 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _FG_NATIVE_GUI_HXX
-#define _FG_NATIVE_GUI_HXX
-
+#pragma once
 
 #include <simgear/compiler.h>
 
@@ -56,5 +53,3 @@ public:
     // close the channel
     bool close();
 };
-
-#endif // _FG_NATIVE_GUI_HXX

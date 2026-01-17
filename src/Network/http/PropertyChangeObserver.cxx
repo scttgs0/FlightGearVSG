@@ -22,9 +22,7 @@
 
 #include <Main/fg_props.hxx>
 using std::string;
-namespace flightgear {
-namespace http {
-
+namespace flightgear::http {
 
 
 PropertyChangeObserver::PropertyChangeObserver()
@@ -101,5 +99,4 @@ bool PropertyChangeObserver::isChangedValue(const SGPropertyNode_ptr node)
   return false;
 }
 
-}  // namespace http
-}  // namespace flightgear
+}  // namespace flightgear::http

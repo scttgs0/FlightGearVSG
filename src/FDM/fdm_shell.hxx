@@ -20,8 +20,7 @@
 //
 // $Id$
 
-#ifndef FG_FDM_SHELL_HXX
-#define FG_FDM_SHELL_HXX
+#pragma once
 
 #include <simgear/math/SGGeod.hxx>
 #include <simgear/structure/subsystem_mgr.hxx>
@@ -86,5 +85,3 @@ private:
     SGPropertyNode_ptr _max_radius_nm;
     SGPropertyNode_ptr _ai_wake_enabled;
 };
-
-#endif // of FG_FDM_SHELL_HXX

@@ -7,11 +7,9 @@
 
 *****************************************************************/
 
+#pragma once
+
 #include "dds/ddsc/dds_public_impl.h"
-
-#ifndef _DDSL_DDS_CTRLS_H_
-#define _DDSL_DDS_CTRLS_H_
-
 
 #ifdef __cplusplus
 extern "C" {
@@ -93,4 +91,3 @@ dds_sample_free ((d), &FG_DDS_Ctrls_desc, (o))
 #ifdef __cplusplus
 }
 #endif
-#endif /* _DDSL_DDS_CTRLS_H_ */

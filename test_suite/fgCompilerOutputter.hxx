@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_COMPILER_OUTPUTTER_HXX
-#define _FG_COMPILER_OUTPUTTER_HXX
-
+#pragma once
 
 #include <cppunit/CompilerOutputter.h>
 #include <cppunit/TestFailure.h>
@@ -84,6 +81,3 @@ class fgCompilerOutputter : public CppUnit::CompilerOutputter
         void printIOStreamMessages(std::string heading, std::string messages, bool empty);
         void printIOStreamMessages(std::string heading, std::string messages) {printIOStreamMessages(heading, messages, false);}
 };
-
-
-#endif    // _FG_COMPILER_OUTPUTTER_HXX

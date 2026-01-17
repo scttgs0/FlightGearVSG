@@ -17,8 +17,7 @@
 //  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef FGPANELTRANSFORMATION_HXX
-#define FGPANELTRANSFORMATION_HXX
+#pragma once
 
 #include <simgear/math/interpolater.hxx>
 #include <simgear/props/condition.hxx>
@@ -48,5 +47,3 @@ public:
   float offset;
   SGInterpTable *table;
 };
-
-#endif

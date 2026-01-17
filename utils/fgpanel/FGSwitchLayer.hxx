@@ -17,8 +17,7 @@
 //  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef FGSWITCHLAYER_HXX
-#define FGSWITCHLAYER_HXX
+#pragma once
 
 #include "FGGroupLayer.hxx"
 
@@ -34,5 +33,3 @@ public:
   FGSwitchLayer ();
   virtual void draw ();
 };
-
-#endif

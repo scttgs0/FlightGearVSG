@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef LOCATION_CONTROLLER_HXX
-#define LOCATION_CONTROLLER_HXX
+#pragma once
 
 #include <QObjectList>
 
@@ -300,5 +299,3 @@ private:
     QString m_carrierParking;
     QStringList m_carrierParkings;
 };
-
-#endif // LOCATION_CONTROLLER_HXX

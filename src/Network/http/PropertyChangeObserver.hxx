@@ -18,15 +18,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef PROPERTYCHANGEOBSERVER_HXX_
-#define PROPERTYCHANGEOBSERVER_HXX_
+#pragma once
 
 #include <simgear/props/props.hxx>
 #include <string>
 #include <vector>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 struct PropertyChangeObserverEntry : public SGReferenced {
   PropertyChangeObserverEntry()
@@ -58,7 +56,4 @@ private:
   Entries_t _entries;
 
 };
-}  // namespace http
-}  // namespace flightgear
-
-#endif /* PROPERTYCHANGEOBSERVER_HXX_ */
+}  // namespace flightgear::http

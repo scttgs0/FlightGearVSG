@@ -8,10 +8,7 @@
 //
 // $Id$
 
-
-#ifndef _NET_FDM_MINI_HXX
-#define _NET_FDM_MINI_HXX
-
+#pragma once
 
 #ifndef __cplusplus                                                          
 # error This library requires C++
@@ -65,6 +62,3 @@ public:
     uint32_t cur_time;            // current unix time
     int32_t warp;                 // offset in seconds to unix time
 };
-
-
-#endif // _NET_FDM_MINI_HXX

@@ -1,5 +1,4 @@
-#ifndef FGQMLINSTANCE_HXX
-#define FGQMLINSTANCE_HXX
+#pragma once
 
 #include <QObject>
 
@@ -24,5 +23,3 @@ signals:
 
 public slots:
 };
-
-#endif // FGQMLINSTANCE_HXX

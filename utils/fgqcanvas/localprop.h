@@ -15,8 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef LOCALPROP_H
-#define LOCALPROP_H
+#pragma once
 
 #include <QByteArray>
 #include <QVariant>
@@ -153,5 +152,3 @@ private:
     QVariant _value;
     unsigned int _position = 0;
 };
-
-#endif // LOCALPROP_H

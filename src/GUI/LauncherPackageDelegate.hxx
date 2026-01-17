@@ -1,5 +1,4 @@
-#ifndef LAUNCHERPACKAGEDELEGATE_HXX
-#define LAUNCHERPACKAGEDELEGATE_HXX
+#pragma once
 
 #include <string>
 
@@ -33,5 +32,3 @@ signals:
 private:
     std::string _defaultCatalogId;
 };
-
-#endif // LAUNCHERPACKAGEDELEGATE_HXX

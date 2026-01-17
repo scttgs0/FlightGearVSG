@@ -17,8 +17,7 @@
 //  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef FGGROUPLAYER_HXX
-#define FGGROUPLAYER_HXX
+#pragma once
 
 #include "FGInstrumentLayer.hxx"
 
@@ -39,5 +38,3 @@ public:
 protected:
   vector <FGInstrumentLayer *> m_layers;
 };
-
-#endif

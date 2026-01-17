@@ -20,8 +20,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#ifndef _FG_IGC_HXX
-#define _FG_IGC_HXX
+#pragma once
 
 #include <simgear/compiler.h>
 #include <FDM/flightProperties.hxx>
@@ -52,5 +51,3 @@ public:
 
     FlightProperties fdm;
 };
-
-#endif // _FG_IGC_HXX

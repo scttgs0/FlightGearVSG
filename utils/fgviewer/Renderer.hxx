@@ -16,8 +16,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef _FGVIEWER_RENDERER_HXX
-#define _FGVIEWER_RENDERER_HXX
+#pragma once
 
 #include <string>
 #include <simgear/structure/SGWeakReferenced.hxx>
@@ -48,5 +47,3 @@ private:
 };
 
 } // namespace fgviewer
-
-#endif

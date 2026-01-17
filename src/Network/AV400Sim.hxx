@@ -24,10 +24,7 @@
 //
 // $Id$
 
-
-#ifndef _FG_AV400SIM_HXX
-#define _FG_AV400SIM_HXX
-
+#pragma once
 
 #include <simgear/compiler.h>
 
@@ -60,6 +57,3 @@ public:
     // close the channel
     bool close();
 };
-
-
-#endif // _FG_AV400SIM_HXX

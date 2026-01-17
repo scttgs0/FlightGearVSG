@@ -1,5 +1,4 @@
-#ifndef _INTEGRATOR_HPP
-#define _INTEGRATOR_HPP
+#pragma once
 
 #include "BodyEnvironment.hpp"
 #include "RigidBody.hpp"
@@ -59,4 +58,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _INTEGRATOR_HPP

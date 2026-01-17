@@ -20,10 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _FG_ATLAS_HXX
-#define _FG_ATLAS_HXX
-
+#pragma once
 
 #include <simgear/compiler.h>
 
@@ -58,8 +55,3 @@ public:
     // close the channel
     bool close();
 };
-
-
-#endif // _FG_ATLAS_HXX
-
-

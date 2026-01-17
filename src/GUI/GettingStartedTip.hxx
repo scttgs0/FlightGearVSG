@@ -1,5 +1,4 @@
-#ifndef GETTINGSTARTEDTIP_HXX
-#define GETTINGSTARTEDTIP_HXX
+#pragma once
 
 #include <QQuickItem>
 #include <QString>
@@ -107,5 +106,3 @@ private:
     QPointer<GettingStartedTipsController> _controller;
     bool _standalone = false;
 };
-
-#endif // GETTINGSTARTEDTIP_HXX

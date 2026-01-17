@@ -1,5 +1,4 @@
-#ifndef MPSERVERSMODEL_H
-#define MPSERVERSMODEL_H
+#pragma once
 
 #include <QAbstractListModel>
 
@@ -68,5 +67,3 @@ private:
     std::vector<ServerInfo> m_servers;
     int m_currentIndex = 0;
 };
-
-#endif // MPSERVERSMODEL_H

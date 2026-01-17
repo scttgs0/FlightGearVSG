@@ -17,8 +17,7 @@
 //  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef FGTEXTUREDLAYER_HXX
-#define FGTEXTUREDLAYER_HXX
+#pragma once
 
 #include "FGCroppedTexture.hxx"
 #include "FGInstrumentLayer.hxx"
@@ -61,5 +60,3 @@ private:
   static GLint Textured_Layer_MVP_Loc;
   static GLint Textured_Layer_Sampler_Loc;
 };
-
-#endif

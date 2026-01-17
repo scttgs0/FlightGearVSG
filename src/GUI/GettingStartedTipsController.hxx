@@ -1,5 +1,4 @@
-#ifndef GETTINGSTARTEDTIPSCONTROLLER_HXX
-#define GETTINGSTARTEDTIPSCONTROLLER_HXX
+#pragma once
 
 #include <QObject>
 #include <QVector>
@@ -146,5 +145,3 @@ private:
     QQuickItem* _visualArea = nullptr;
     int _activeTipHeight = 0;
 };
-
-#endif // GETTINGSTARTEDTIPSCONTROLLER_HXX

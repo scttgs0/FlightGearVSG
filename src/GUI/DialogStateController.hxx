@@ -14,8 +14,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef DialogStateController_h
-#define DialogStateController_h
+#pragma once
 
 #include <QJSValue>
 #include <QMap>
@@ -62,5 +61,3 @@ private:
     bool m_canApply = false;
     bool m_canRestoreDefaults = false;
 };
-
-#endif /* DialogStateController_h */

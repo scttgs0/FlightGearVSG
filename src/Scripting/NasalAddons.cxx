@@ -22,10 +22,7 @@
 #include <Add-ons/AddonVersion.hxx>
 #include <Add-ons/contacts.hxx>
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 // ***************************************************************************
@@ -195,6 +192,4 @@ void initAddonClassesForNasal(naRef globals, naContext c)
   addonsModule.createHash("AddonVersion").set("new", &f_createAddonVersion);
 }
 
-} // of namespace addons
-
-} // of namespace flightgear
+} // of namespace flightgear::addons

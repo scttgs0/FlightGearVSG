@@ -1,5 +1,4 @@
-#ifndef _CONTROL_MAP_HPP
-#define _CONTROL_MAP_HPP
+#pragma once
 
 #include <string>
 
@@ -163,4 +162,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _CONTROL_MAP_HPP

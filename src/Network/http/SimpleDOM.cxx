@@ -1,8 +1,7 @@
 #include "SimpleDOM.hxx"
 using std::string;
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 DOMNode::~DOMNode()
 {
@@ -50,5 +49,4 @@ DOMNode * DOMNode::setAttribute( const string & name, const string & value )
   return this;
 }
 
-}
-}
+} // namespace flightgear::http

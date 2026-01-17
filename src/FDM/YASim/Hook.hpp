@@ -1,5 +1,4 @@
-#ifndef _HOOK_HPP
-#define _HOOK_HPP
+#pragma once
 
 namespace yasim {
 
@@ -65,4 +64,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _HOOK_HPP

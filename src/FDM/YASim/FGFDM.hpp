@@ -1,5 +1,4 @@
-#ifndef _FGFDM_HPP
-#define _FGFDM_HPP
+#pragma once
 
 #include <simgear/xml/easyxml.hxx>
 #include <simgear/props/props.hxx>
@@ -181,4 +180,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _FGFDM_HPP

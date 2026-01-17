@@ -15,8 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef CANVASCONNECTION_H
-#define CANVASCONNECTION_H
+#pragma once
 
 #include <memory>
 
@@ -155,5 +154,3 @@ private:
     mutable FGQCanvasImageLoader* m_imageLoader = nullptr;
     mutable FGQCanvasFontCache* m_fontCache = nullptr;
 };
-
-#endif // CANVASCONNECTION_H

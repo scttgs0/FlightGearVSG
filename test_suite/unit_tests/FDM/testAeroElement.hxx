@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_AERO_ELEMENT_UNIT_TESTS_HXX
-#define _FG_AERO_ELEMENT_UNIT_TESTS_HXX
-
+#pragma once
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -62,5 +59,3 @@ public:
     void testInducedVelocityUpstream();
     void testNormal();
 };
-
-#endif  // _FG_AERO_ELEMENT_UNIT_TESTS_HXX

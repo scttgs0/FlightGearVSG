@@ -18,14 +18,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FG_HTTPREQUEST_HXX
-#define FG_HTTPREQUEST_HXX
+#pragma once
 
 #include <string>
 #include <map>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 class HTTPRequest 
 {
@@ -59,7 +57,4 @@ public:
 
 };
 
-}
-} // namespace flightgear
-
-#endif // FG_HTTPREQUEST_HXX
+} // namespace flightgear::http

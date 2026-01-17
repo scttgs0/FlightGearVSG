@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_TEST_LISTENER_HXX
-#define _FG_TEST_LISTENER_HXX
-
+#pragma once
 
 #include <time.h>
 #include <vector>
@@ -105,6 +102,3 @@ protected:
     // Test timings.
     clock_t m_time;
 };
-
-
-#endif // _FG_TEST_LISTENER_HXX

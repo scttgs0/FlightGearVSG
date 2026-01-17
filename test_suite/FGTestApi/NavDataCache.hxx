@@ -17,9 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef FG_NAV_DATA_CACHE_TEST_HELPERS_HXX
-#define FG_NAV_DATA_CACHE_TEST_HELPERS_HXX
+#pragma once
 
 namespace FGTestApi {
 
@@ -31,5 +29,3 @@ void initNavDataCache();
 }  // End of namespace setUp.
 
 }  // End of namespace FGTestApi.
-
-#endif // of FG_NAV_DATA_CACHE_TEST_HELPERS_HXX

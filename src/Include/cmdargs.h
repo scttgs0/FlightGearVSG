@@ -15,9 +15,7 @@
 //
 // $Id$
 
-
-#ifndef _CMDARGS_H
-#define _CMDARGS_H
+#pragma once
 
 // buffers here are all MAXPATH in length. IS THIS DEFINE UNIVERSAL?
 
@@ -35,8 +33,3 @@ extern const char *DefaultRootDir;
 extern const char *DefaultAircraft;
 extern const char *DefaultDebuglog;
 extern const int   DefaultViewMode;
-
-#endif
-// end of cmdargs.h
-
-

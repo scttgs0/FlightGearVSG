@@ -1,5 +1,4 @@
-#ifndef _TURBINEENGINE_HPP
-#define _TURBINEENGINE_HPP
+#pragma once
 
 #include "Engine.hpp"
 
@@ -54,4 +53,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _TURBINEENGINE_HPP

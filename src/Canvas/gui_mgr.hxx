@@ -16,8 +16,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef CANVAS_GUI_MGR_HXX_
-#define CANVAS_GUI_MGR_HXX_
+#pragma once
 
 #include <simgear/canvas/canvas_fwd.hxx>
 #include <simgear/canvas/elements/CanvasGroup.hxx>
@@ -87,5 +86,3 @@ protected:
     addWindowPlacement( SGPropertyNode* placement,
                         simgear::canvas::CanvasPtr canvas );
 };
-
-#endif /* CANVAS_GUI_MGR_HXX_ */

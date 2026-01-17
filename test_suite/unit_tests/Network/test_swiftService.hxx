@@ -3,8 +3,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef FLIGHTGEAR_TEST_SWIFTSERVICE_H
-#define FLIGHTGEAR_TEST_SWIFTSERVICE_H
+#pragma once
 
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
@@ -26,6 +25,3 @@ public:
     // Test
     void testService();
 };
-
-
-#endif //FLIGHTGEAR_TEST_SWIFTSERVICE_H

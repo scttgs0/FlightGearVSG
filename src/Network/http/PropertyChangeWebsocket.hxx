@@ -18,16 +18,14 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef PROPERTYCHANGEWEBSOCKET_HXX_
-#define PROPERTYCHANGEWEBSOCKET_HXX_
+#pragma once
 
 #include "Websocket.hxx"
 #include <simgear/props/props.hxx>
 
 #include <vector>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 class PropertyChangeObserver;
 
@@ -55,7 +53,4 @@ private:
   double _lastTrigger = -1000.0;
 };
 
-}
-}
-
-#endif /* PROPERTYCHANGEWEBSOCKET_HXX_ */
+} // namespace flightgear::http

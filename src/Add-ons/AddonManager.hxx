@@ -17,8 +17,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef FG_ADDONMANAGER_HXX
-#define FG_ADDONMANAGER_HXX
+#pragma once
 
 #include <string>
 #include <map>
@@ -32,10 +31,7 @@
 #include "Addon.hxx"
 #include "AddonVersion.hxx"
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 class AddonManager
@@ -107,8 +103,4 @@ private:
   int _loadSequenceNumber = 0;
 };
 
-} // of namespace addons
-
-} // of namespace flightgear
-
-#endif  // of FG_ADDONMANAGER_HXX
+} // of namespace flightgear::addons

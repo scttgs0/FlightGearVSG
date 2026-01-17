@@ -1,5 +1,4 @@
-#ifndef CARRIERSMODEL_H
-#define CARRIERSMODEL_H
+#pragma once
 
 #include <vector>
 
@@ -61,5 +60,3 @@ private:
 
     void processCarrier(const std::string& scenario, SGPropertyNode_ptr carrierNode);
 };
-
-#endif // CARRIERSMODEL_H

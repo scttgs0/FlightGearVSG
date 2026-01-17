@@ -1,5 +1,5 @@
-#ifndef _RIGIDBODY_HPP
-#define _RIGIDBODY_HPP
+#pragma once
+
 #include <simgear/props/props.hxx>
 #include "Math.hpp"
 
@@ -132,4 +132,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _RIGIDBODY_HPP

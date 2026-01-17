@@ -20,10 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _SCENERY_HXX
-#define _SCENERY_HXX
-
+#pragma once
 
 #ifndef __cplusplus
 # error This library requires C++
@@ -156,5 +153,3 @@ private:
     // The state of the scene graph.
     bool _inited;
 };
-
-#endif // _SCENERY_HXX

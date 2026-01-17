@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_ROUTE_MANAGER_UNIT_TESTS_HXX
-#define _FG_ROUTE_MANAGER_UNIT_TESTS_HXX
-
+#pragma once
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -85,5 +82,3 @@ public:
 private:
     GPS* m_gps = nullptr;
 };
-
-#endif  // _FG_ROUTE_MANAGER_UNIT_TESTS_HXX

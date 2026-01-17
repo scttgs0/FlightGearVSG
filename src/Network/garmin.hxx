@@ -20,8 +20,7 @@
 //
 // $Id$
 
-#ifndef _FG_GARMIN_HXX
-#define _FG_GARMIN_HXX
+#pragma once
 
 #include "nmea.hxx"
 
@@ -51,5 +50,3 @@ public:
 
     virtual bool gen_message();
 };
-
-#endif // _FG_GARMIN_HXX

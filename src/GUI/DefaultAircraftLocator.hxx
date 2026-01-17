@@ -1,5 +1,4 @@
-#ifndef DEFAULTAIRCRAFTLOCATOR_HXX
-#define DEFAULTAIRCRAFTLOCATOR_HXX
+#pragma once
 
 #include <string>
 #include <simgear/misc/sg_path.hxx>
@@ -73,5 +72,3 @@ private:
 };
 
 }
-
-#endif // DEFAULTAIRCRAFTLOCATOR_HXX

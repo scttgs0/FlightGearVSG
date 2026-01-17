@@ -20,9 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-
-#ifndef _FGAISim_HXX
-#define _FGAISim_HXX
+#pragma once
 
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
@@ -270,6 +268,3 @@ private:
     float qbar = 0.0f;
     float sigma = 0.0f;
 };
-
-#endif // _FGAISim_HXX
-

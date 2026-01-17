@@ -17,8 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef FG_GUI_WINDOWS_MOUSE_CURSOR_HXX
-#define FG_GUI_WINDOWS_MOUSE_CURSOR_HXX
+#pragma once
 
 #include <memory> // for unique_ptr
 
@@ -42,6 +41,3 @@ private:
     class WindowsMouseCursorPrivate;
     std::unique_ptr<WindowsMouseCursorPrivate> d;
 };
-
-
-#endif

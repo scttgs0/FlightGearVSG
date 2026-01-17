@@ -1,5 +1,4 @@
-#ifndef _FG_PRIVATE_ACCESSOR_FDM_HXX
-#define _FG_PRIVATE_ACCESSOR_FDM_HXX
+#pragma once
 
 #include <map>
 #include <memory>
@@ -49,5 +48,3 @@ public:
 } // End of namespace FDM.
 } // End of namespace PrivateAccessor.
 } // End of namespace FGTestApi.
-
-#endif // _FG_PRIVATE_ACCESSOR_FDM_HXX

@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FG_GUI_CATALOG_LIST_MODEL
-#define FG_GUI_CATALOG_LIST_MODEL
+#pragma once
 
 #include <QAbstractListModel>
 #include <QDateTime>
@@ -121,5 +120,3 @@ private:
 
     CatalogStatus translateStatusForCatalog(simgear::pkg::CatalogRef cat) const;
 };
-
-#endif // of FG_GUI_CATALOG_LIST_MODEL

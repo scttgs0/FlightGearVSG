@@ -17,9 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-
-#ifndef FG_GUI_COCOA_HELPERS_PRIVATE_H
-#define FG_GUI_COCOA_HELPERS_PRIVATE_H
+#pragma once
 
 #include <string>
 
@@ -45,5 +43,3 @@ public:
 private:
     NSAutoreleasePool* pool;
 };
-  
-#endif

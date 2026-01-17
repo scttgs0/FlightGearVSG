@@ -1,5 +1,4 @@
-#ifndef _THRUSTER_HPP
-#define _THRUSTER_HPP
+#pragma once
 
 #include "Atmosphere.hpp"
 #include "Math.hpp"
@@ -65,4 +64,3 @@ protected:
 };
 
 }; // namespace yasim
-#endif // _THRUSTER_HPP

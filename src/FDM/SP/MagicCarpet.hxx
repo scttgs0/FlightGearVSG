@@ -20,10 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _MAGICCARPET_HXX
-#define _MAGICCARPET_HXX
-
+#pragma once
 
 #include <FDM/flight.hxx>
 
@@ -41,5 +38,3 @@ public:
     // Subsystem identification.
     static const char* staticSubsystemClassId() { return "magic"; }
 };
-
-#endif // _MAGICCARPET_HXX

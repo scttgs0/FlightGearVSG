@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_HOLD_CTL_UNIT_TESTS_HXX
-#define _FG_HOLD_CTL_UNIT_TESTS_HXX
-
+#pragma once
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -74,5 +71,3 @@ private:
     GPS* m_gps = nullptr;
     SGPropertyNode_ptr m_gpsNode;
 };
-
-#endif  // _FG_HOLD_CTL_UNIT_TESTS_HXX

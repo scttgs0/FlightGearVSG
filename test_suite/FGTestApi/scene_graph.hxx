@@ -17,8 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef FG_TEST_SCENE_GRAPH_HXX
-#define FG_TEST_SCENE_GRAPH_HXX
+#pragma once
 
 namespace FGTestApi {
 namespace setUp {
@@ -27,5 +26,3 @@ void initScenery();
 
 } // End of namespace setUp.
 } // End of namespace FGTestApi.
-
-#endif // FG_TEST_SCENE_GRAPH_HXX

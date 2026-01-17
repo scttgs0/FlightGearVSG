@@ -28,8 +28,7 @@
 
 using std::string;
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 bool JsonUriHandler::handleRequest( const HTTPRequest & request, HTTPResponse & response, Connection * connection )
 {
@@ -108,6 +107,4 @@ SGPropertyNode_ptr JsonUriHandler::getRequestedNode(const HTTPRequest & request)
 }
 
 
-} // namespace http
-} // namespace flightgear
-
+} // namespace flightgear::http

@@ -1,5 +1,4 @@
-#ifndef _PROPENGINE_HPP
-#define _PROPENGINE_HPP
+#pragma once
 
 #include "Thruster.hpp"
 #include "Engine.hpp"
@@ -64,4 +63,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _PROPENGINE_HPP

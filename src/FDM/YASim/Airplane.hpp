@@ -1,5 +1,4 @@
-#ifndef _AIRPLANE_HPP
-#define _AIRPLANE_HPP
+#pragma once
 
 #include "ControlMap.hpp"
 #include "Model.hpp"
@@ -278,4 +277,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _AIRPLANE_HPP

@@ -23,8 +23,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#ifndef MPIRC_H
-#define MPIRC_H
+#pragma once
 
 #include <deque>
 #include <string>
@@ -92,5 +91,3 @@ private:
     SGPropertyNode *_pMessageCountOut {nullptr};
     SGPropertyNode *_pIRCReturnCode {nullptr};
 };
-
-#endif

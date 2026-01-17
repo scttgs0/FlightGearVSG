@@ -1,5 +1,4 @@
-#ifndef _MATH_HPP
-#define _MATH_HPP
+#pragma once
 
 #include <cmath>
 #include <vector>
@@ -262,4 +261,3 @@ public:
 };
 
 }; // namespace yasim
-#endif // _MATH_HPP

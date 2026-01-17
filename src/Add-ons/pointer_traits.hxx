@@ -17,18 +17,14 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#ifndef FG_ADDON_POINTER_TRAITS_HXX
-#define FG_ADDON_POINTER_TRAITS_HXX
+#pragma once
 
 #include <memory>
 #include <utility>
 
 #include <simgear/structure/SGSharedPtr.hxx>
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 template <typename T>
@@ -60,8 +56,4 @@ struct shared_ptr_traits<std::shared_ptr<T>>
   }
 };
 
-} // of namespace addons
-
-} // of namespace flightgear
-
-#endif  // of FG_ADDON_POINTER_TRAITS_HXX
+} // of namespace flightgear::addons

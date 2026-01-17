@@ -1,5 +1,4 @@
-#ifndef _VERSION_HPP
-#define _VERSION_HPP
+#pragma once
 
 #include <string>
 #include <type_traits>
@@ -43,4 +42,3 @@ inline bool Version::isVersionOrNewer( YASIM_VERSION version ) const
 std::ostream& operator<<(std::ostream& os, const YASIM_VERSION& version);
 
 }; // namespace yasim
-#endif // _WING_HPP

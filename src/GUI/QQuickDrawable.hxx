@@ -16,8 +16,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FG_VIEWER_QUICK_DRAWABLE_HXX
-#define FG_VIEWER_QUICK_DRAWABLE_HXX
+#pragma once
 
 #include <memory>
 #include <osg/Drawable>
@@ -54,5 +53,3 @@ public:
 private:
   std::unique_ptr<QQuickDrawablePrivate> d;
 };
-
-#endif

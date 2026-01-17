@@ -15,8 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef FGCANVASTEXT_H
-#define FGCANVASTEXT_H
+#pragma once
 
 #include <QFont>
 #include <QFontMetricsF>
@@ -65,6 +64,3 @@ private:
 
     TextCanvasItem* _quickItem = nullptr;
 };
-
-
-#endif // FGCANVASTEXT_H

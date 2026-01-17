@@ -17,9 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_TEST_SUITE_FORMATTING_HXX
-#define _FG_TEST_SUITE_FORMATTING_HXX
+#pragma once
 
 #include <cppunit/portability/Stream.h>
 
@@ -35,6 +33,3 @@ void printSummaryLine(CppUnit::OStream &stream, const std::string &name, int pas
 
 // Printout of a title label.
 void printTitle(CppUnit::OStream &stream, const std::string &text);
-
-
-#endif  // _FG_TEST_SUITE_FORMATTING_HXX

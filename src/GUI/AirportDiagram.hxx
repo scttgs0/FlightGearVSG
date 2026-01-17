@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef GUI_AIRPORT_DIAGRAM_HXX
-#define GUI_AIRPORT_DIAGRAM_HXX
+#pragma once
 
 #include "BaseDiagram.hxx"
 
@@ -145,5 +144,3 @@ private:
     QPainterPath m_helipadIconPath, m_helipadBoundsPath;
     FGPositionedRef m_selection;
 };
-
-#endif // of GUI_AIRPORT_DIAGRAM_HXX

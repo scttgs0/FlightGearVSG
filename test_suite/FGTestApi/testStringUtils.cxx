@@ -12,9 +12,8 @@
 
 using namespace flightgear;
 
-namespace FGTestApi {
+namespace FGTestApi::strings {
 
-namespace strings {
 std::string getTimeString(int timeOffset)
 {
     char ret[11];
@@ -25,6 +24,4 @@ std::string getTimeString(int timeOffset)
     return ret;
 }
 
-} // End of namespace strings.
-
-} // End of namespace FGTestApi.
+} // End of namespace FGTestApi::strings.

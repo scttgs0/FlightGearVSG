@@ -20,8 +20,7 @@
 //
 // $Id$
 
-#ifndef _EXTERNAL_PIPE_HXX
-#define _EXTERNAL_PIPE_HXX
+#pragma once
 
 #include <stdio.h>              // FILE*, fopen(), fread(), fwrite(), et. al.
 
@@ -77,5 +76,3 @@ public:
     // Subsystem identification.
     static const char* staticSubsystemClassId() { return "pipe"; }
 };
-
-#endif // _EXTERNAL_PIPE_HXX

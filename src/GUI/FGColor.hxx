@@ -1,5 +1,4 @@
-#ifndef FG_GUI_COLOR_HXX
-#define FG_GUI_COLOR_HXX
+#pragma once
 
 // forward decls
 class SGPropertyNode;
@@ -45,5 +44,3 @@ protected:
 private:
     float clamp(float f) const { return f < 0.0 ? 0.0f : f > 1.0 ? 1.0f : f; }
 };
-
-#endif

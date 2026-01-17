@@ -17,8 +17,8 @@
  You should have received a copy of the GNU General Public License
  along with FlightGear.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __FG_MPSERVERRESOLVER_HXX
-#define __FG_MPSERVERRESOLVER_HXX
+
+ #pragma once
 
 #include <string>
 #include <simgear/props/props.hxx>
@@ -79,5 +79,3 @@ private:
   SGPropertyNode_ptr _targetNode;
   MPServerResolver_priv * _priv;
 };
-
-#endif // __FG_MPSERVERRESOLVER_HXX

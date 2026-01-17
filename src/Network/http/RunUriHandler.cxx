@@ -30,8 +30,7 @@
 
 using std::string;
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 
 bool RunUriHandler::handleRequest( const HTTPRequest & request, HTTPResponse & response, Connection * connection )
@@ -63,6 +62,4 @@ bool RunUriHandler::handleRequest( const HTTPRequest & request, HTTPResponse & r
   return true;
 }
 
-} // namespace http
-} // namespace flightgear
-
+} // namespace flightgear::http

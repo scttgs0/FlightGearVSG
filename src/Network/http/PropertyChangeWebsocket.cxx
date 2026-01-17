@@ -33,8 +33,7 @@
 
 #include <nlohmann/json.hpp>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 using nlohmann::json;
 using std::string;
@@ -221,5 +220,4 @@ void PropertyChangeWebsocket::WatchedNodesList::handleCommand(const string & com
   }
 }
 
-} // namespace http
-} // namespace flightgear
+} // namespace flightgear::http

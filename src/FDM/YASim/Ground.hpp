@@ -1,5 +1,4 @@
-#ifndef _GROUND_HPP
-#define _GROUND_HPP
+#pragma once
 
 namespace simgear {
 class BVHMaterial;
@@ -33,4 +32,3 @@ public:
 };
 
 }; // namespace yasim
-#endif // _GROUND_HPP

@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_INSTANCED_SUBSYSTEM_SYSTEM_TESTS_HXX
-#define _FG_INSTANCED_SUBSYSTEM_SYSTEM_TESTS_HXX
-
+#pragma once
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -109,5 +106,3 @@ private:
     // Helper functions.
     void create(const char* name);
 };
-
-#endif  // _FG_INSTANCED_SUBSYSTEM_SYSTEM_TESTS_HXX

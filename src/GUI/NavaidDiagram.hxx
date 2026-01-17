@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef GUI_NAVAID_DIAGRAM_HXX
-#define GUI_NAVAID_DIAGRAM_HXX
+#pragma once
 
 #include "BaseDiagram.hxx"
 #include "QmlPositioned.hxx"
@@ -84,5 +83,3 @@ private:
     QuantityValue m_offsetBearing;
     QuantityValue m_heading;
 };
-
-#endif // of GUI_NAVAID_DIAGRAM_HXX

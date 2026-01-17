@@ -1,5 +1,4 @@
-#ifndef FGCANVASGROUP_H
-#define FGCANVASGROUP_H
+#pragma once
 
 #include "fgcanvaselement.h"
 
@@ -57,5 +56,3 @@ private:
 
     CanvasItem* _quick = nullptr;
 };
-
-#endif // FGCANVASGROUP_H

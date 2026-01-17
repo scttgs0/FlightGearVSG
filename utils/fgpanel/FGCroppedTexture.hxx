@@ -16,8 +16,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
-#ifndef FGCROPPEDTEXTURE_HXX
-#define FGCROPPEDTEXTURE_HXX
+
+#pragma once
 
 #include <map>
 #include <simgear/structure/SGSharedPtr.hxx>
@@ -65,5 +65,3 @@ private:
 };
 
 typedef SGSharedPtr <FGCroppedTexture> FGCroppedTexture_ptr;
-
-#endif

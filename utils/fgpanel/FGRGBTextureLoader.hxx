@@ -13,8 +13,8 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
-#ifndef __FGRGBTEXTURELOADER_HXX
-#define __FGRGBTEXTURELOADER_HXX
+
+#pragma once
 
 #include "FGTextureLoaderInterface.hxx"
 
@@ -24,5 +24,3 @@ public:
 
   const static GLuint NOTEXTURE = 0;
 };
-
-#endif

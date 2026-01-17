@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef MIRROR_PROP_TREE_WEBSOCKET_HXX_
-#define MIRROR_PROP_TREE_WEBSOCKET_HXX_
+#pragma once
 
 #include "Websocket.hxx"
 
@@ -29,8 +28,7 @@
 #include <vector>
 #include <memory>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
     class MirrorTreeListener;
     
@@ -56,7 +54,4 @@ private:
     SGTimeStamp _lastSendTime;
 };
 
-}
-}
-
-#endif /* MIRROR_PROP_TREE_WEBSOCKET_HXX_ */
+} // namespace flightgear::http

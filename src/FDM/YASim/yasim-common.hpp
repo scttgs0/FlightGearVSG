@@ -1,5 +1,4 @@
-#ifndef _YASIM_COMMON_HPP
-#define _YASIM_COMMON_HPP
+#pragma once
 
 /*
  common file for YASim wide constants and static helper functions
@@ -36,5 +35,3 @@ namespace yasim {
     static const float INCIDENCE_MIN = -20*DEG2RAD;
     static const float INCIDENCE_MAX = 20*DEG2RAD;
 }; //namespace yasim
-
-#endif // ifndef _YASIM_COMMON_HPP

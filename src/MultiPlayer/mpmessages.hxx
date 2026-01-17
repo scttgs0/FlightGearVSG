@@ -21,8 +21,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef MPMESSAGES_H
-#define MPMESSAGES_H
+#pragma once
 
 #define MPMESSAGES_HID "$Id$"
 
@@ -182,5 +181,3 @@ struct FGExternalMotionData {
       }
   }
 };
-
-#endif

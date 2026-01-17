@@ -18,8 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef GUI_ROUTE_DIAGRAM_HXX
-#define GUI_ROUTE_DIAGRAM_HXX
+#pragma once
 
 #include "BaseDiagram.hxx"
 #include "QmlPositioned.hxx"
@@ -77,5 +76,3 @@ private:
     std::unique_ptr<RoutePath> m_path;
     int m_activeLegIndex = 0;
 };
-
-#endif // of GUI_ROUTE_DIAGRAM_HXX

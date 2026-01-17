@@ -8,9 +8,7 @@
 //
 // $Id$
 
-
-#ifndef _NET_CTRLS_HXX
-#define _NET_CTRLS_HXX
+#pragma once
 
 #include <simgear/misc/stdint.hxx>
 
@@ -144,8 +142,3 @@ public:
 
     uint32_t reserved[RESERVED_SPACE];	 // 100 bytes reserved for future use.
 };
-
-
-#endif // _NET_CTRLS_HXX
-
-

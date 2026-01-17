@@ -16,8 +16,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef CANVAS_MGR_H_
-#define CANVAS_MGR_H_
+#pragma once
 
 #include <simgear/canvas/CanvasMgr.hxx>
 #include <simgear/props/PropertyBasedMgr.hxx>
@@ -52,5 +51,3 @@ protected:
 
     void handleModelReinit(SGPropertyNode*);
 };
-
-#endif /* CANVAS_MGR_H_ */

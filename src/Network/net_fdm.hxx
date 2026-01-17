@@ -8,10 +8,7 @@
 //
 // $Id$
 
-
-#ifndef _NET_FDM_HXX
-#define _NET_FDM_HXX
-
+#pragma once
 
 #include <time.h> // time_t
 #include <simgear/misc/stdint.hxx>
@@ -122,6 +119,3 @@ public:
     float speedbrake;
     float spoilers;
 };
-
-
-#endif // _NET_FDM_HXX

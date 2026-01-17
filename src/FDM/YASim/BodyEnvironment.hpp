@@ -1,5 +1,4 @@
-#ifndef _BODYENVIRONMENT_HPP
-#define _BODYENVIRONMENT_HPP
+#pragma once
 
 #include "Math.hpp"
 
@@ -118,4 +117,3 @@ public:
 };
 
 }; // namespace yasim
-#endif // _BODYENVIRONMENT_HPP

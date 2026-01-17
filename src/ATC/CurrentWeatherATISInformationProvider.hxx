@@ -1,8 +1,7 @@
 // SPDX-FileCopyrightText: 2014 Torsten Dreyer
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef __CURRENTWEATHER_ATIS_ENCODER_HXX
-#define __CURRENTWEATHER_ATIS_ENCODER_HXX
+#pragma once
 
 /* ATIS encoder from current weather */
 
@@ -38,5 +37,3 @@ private:
     std::string _airportId;
     SGPropertyNode_ptr _environment;
 };
-
-#endif

@@ -21,9 +21,7 @@
 //
 // $Id$
 
-
-#ifndef COLOURS_H
-#define COLOURS_H
+#pragma once
 
 unsigned char msfs_colour[256][3]=
 {
@@ -284,6 +282,3 @@ unsigned char msfs_colour[256][3]=
 	{ 33,  99, 123},
 	{ 74, 115, 132}
 };
-
-
-#endif

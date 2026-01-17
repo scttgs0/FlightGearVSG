@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_AIRCRAFT_PERFORMANCE_UNIT_TESTS_HXX
-#define _FG_AIRCRAFT_PERFORMANCE_UNIT_TESTS_HXX
-
+#pragma once
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -45,5 +42,3 @@ public:
     void testBasic();
     void testAltitudeGradient();
 };
-
-#endif  // AircraftPerformanceTests

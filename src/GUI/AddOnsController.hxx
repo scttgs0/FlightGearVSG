@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2018 James Turner
 // SPDX-License-Identifier: GPL-2.0-or-later
-#ifndef ADDONSCONTROLLER_HXX
-#define ADDONSCONTROLLER_HXX
+
+#pragma once
 
 #include <QObject>
 #include <QStringList>
@@ -85,5 +85,3 @@ private:
     PathListModel* m_sceneryPaths = nullptr;
     QStringList m_addonModulePaths;
 };
-
-#endif // ADDONSCONTROLLER_HXX

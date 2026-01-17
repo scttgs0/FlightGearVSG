@@ -25,13 +25,7 @@
 
 using std::string;
 
-namespace flightgear
-{
-
-namespace addons
-{
-
-namespace errors
+namespace flightgear::addons::errors
 {
 
 // ***************************************************************************
@@ -48,8 +42,4 @@ error::error(const char* message, const char* origin)
   : error(string(message), string(origin))
 { }
 
-} // of namespace errors
-
-} // of namespace addons
-
-} // of namespace flightgear
+} // of namespace flightgear::addons::errors

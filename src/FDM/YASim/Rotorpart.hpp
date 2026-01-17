@@ -1,5 +1,5 @@
-#ifndef _ROTORPART_HPP
-#define _ROTORPART_HPP
+#pragma once
+
 #include <iosfwd>
 
 namespace yasim {
@@ -125,4 +125,3 @@ namespace yasim {
     };
     std::ostream &  operator<<(std::ostream & out, const Rotorpart& rp);
 }; // namespace yasim
-#endif // _ROTORPART_HPP

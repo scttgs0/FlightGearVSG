@@ -3,6 +3,8 @@
 // SPDX-FileCopyrightText: 2014 James Turner
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#pragma once
+
 #include <QDialog>
 #include <QScopedPointer>
 #include <QString>

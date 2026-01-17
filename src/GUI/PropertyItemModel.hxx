@@ -1,5 +1,4 @@
-#ifndef PROPERTYITEMMODEL_HXX
-#define PROPERTYITEMMODEL_HXX
+#pragma once
 
 #include <QAbstractListModel>
 #include <QQmlListProperty>
@@ -81,5 +80,3 @@ private:
 
     mutable std::vector<SGPropertyNode_ptr> _nodes;
 };
-
-#endif // PROPERTYITEMMODEL_HXX

@@ -18,14 +18,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef WEBSOCKET_HXX_
-#define WEBSOCKET_HXX_
+#pragma once
 
 #include "HTTPRequest.hxx"
 #include <string>
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 class WebsocketWriter {
 public:
@@ -74,7 +72,4 @@ public:
 
 };
 
-} // namespace http
-} // namespace flightgear
-
-#endif /* WEBSOCKET_HXX_ */
+} // namespace flightgear::http

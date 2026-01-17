@@ -17,8 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _FGTEST_API_TEST_PILOT_HXX
-#define _FGTEST_API_TEST_PILOT_HXX
+#pragma once
 
 #include <simgear/props/propsfwd.hxx>
 #include <simgear/math/SGMathFwd.hxx>
@@ -107,6 +106,3 @@ private:
 };
 
 } // of namespace FGTestApi
-
-#endif // of _FGTEST_API_TEST_PILOT_HXX
-

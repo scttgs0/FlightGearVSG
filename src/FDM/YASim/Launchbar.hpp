@@ -1,5 +1,4 @@
-#ifndef _LAUNCHBAR_HPP
-#define _LAUNCHBAR_HPP
+#pragma once
 
 namespace yasim {
 
@@ -90,4 +89,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _LAUNCHBAR_HPP

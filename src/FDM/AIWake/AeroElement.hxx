@@ -20,8 +20,7 @@
 //
 // $Id$
 
-#ifndef _FG_AEROELEMENT_HXX
-#define _FG_AEROELEMENT_HXX
+#pragma once
 
 #include <simgear/math/SGMathFwd.hxx>
 
@@ -44,5 +43,3 @@ private:
 };
 
 typedef SGSharedPtr<AeroElement> AeroElement_ptr;
-
-#endif

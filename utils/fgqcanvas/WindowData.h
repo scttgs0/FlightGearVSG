@@ -1,5 +1,5 @@
-#ifndef WINDOWDATA_H
-#define WINDOWDATA_H
+
+#pragma once
 
 #include <QObject>
 #include <QJsonObject>
@@ -42,5 +42,3 @@ private:
     QString m_screenName;
     QString m_title;
 };
-
-#endif // WINDOWDATA_H

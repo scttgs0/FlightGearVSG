@@ -20,10 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _TILEENTRY_HXX
-#define _TILEENTRY_HXX
-
+#pragma once
 
 #ifndef __cplusplus
 # error This library requires C++
@@ -166,6 +163,3 @@ class VPBTileEntry : public TileEntry {
         ~VPBTileEntry();
         inline TileEntry::Extension getExtension() { return TileEntry::Extension::VPB; };
 };
-
-
-#endif // _TILEENTRY_HXX

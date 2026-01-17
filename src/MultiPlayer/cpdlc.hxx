@@ -23,8 +23,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#ifndef CPDLC_H
-#define CPDLC_H
+#pragma once
 
 #include <deque>
 #include <string>
@@ -72,5 +71,3 @@ private:
 
     void processMessage(struct IRCMessage entry);
 };
-
-#endif

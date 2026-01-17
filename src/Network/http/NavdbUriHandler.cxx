@@ -31,8 +31,7 @@ using std::string;
 
 using njson = nlohmann::json;
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 static njson createPositionArray(double x, double y, double z)
 {
@@ -334,6 +333,4 @@ bool NavdbUriHandler::handleRequest(const HTTPRequest & request, HTTPResponse & 
   return true;
 }
 
-} // namespace http
-} // namespace flightgear
-
+} // namespace flightgear::http

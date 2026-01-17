@@ -14,8 +14,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef AIPhysics_hxx
-#define AIPhysics_hxx
+#pragma once
 
 #include <simgear/math/SGMath.hxx>
 #include "AISubsystem.hxx"
@@ -104,5 +103,3 @@ private:
 };
 
 } // namespace fgai
-
-#endif

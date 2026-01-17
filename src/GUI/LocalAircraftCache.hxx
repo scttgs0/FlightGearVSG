@@ -1,8 +1,7 @@
 // SPDX-FileCopyrightText: 2017 James Turner
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef LOCALAIRCRAFTCACHE_HXX
-#define LOCALAIRCRAFTCACHE_HXX
+#pragma once
 
 #include <memory>
 #include <QObject>
@@ -180,5 +179,3 @@ private:
     class AircraftCachePrivate;
     std::unique_ptr<AircraftCachePrivate> d;
 };
-
-#endif // LOCALAIRCRAFTCACHE_HXX

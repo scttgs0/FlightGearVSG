@@ -17,8 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _FG_TEST_SUITE_DATA_STORE_HXX
-#define _FG_TEST_SUITE_DATA_STORE_HXX
+#pragma once
 
 #include <simgear/misc/sg_path.hxx>
 
@@ -49,6 +48,3 @@ private:
     // The path to FGData.
     SGPath _fgRootPath;
 };
-
-
-#endif // _FG_TEST_SUITE_DATA_STORE_HXX

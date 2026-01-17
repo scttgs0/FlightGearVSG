@@ -1,5 +1,4 @@
-#ifndef _ENGINE_HPP
-#define _ENGINE_HPP
+#pragma once
 
 namespace yasim {
 
@@ -47,4 +46,3 @@ protected:
 };
 
 }; // namespace yasim
-#endif // _ENGINE_HPP

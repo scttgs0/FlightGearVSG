@@ -22,9 +22,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-
-#ifndef _FG_OPENGC_HXX
-#define _FG_OPENGC_HXX
+#pragma once
 
 #include <simgear/compiler.h>
 
@@ -159,8 +157,3 @@ public:
 
     void collect_data(ogcFGData *data );
 };
-
-#endif // _FG_OPENGC_HXX
-
-
-

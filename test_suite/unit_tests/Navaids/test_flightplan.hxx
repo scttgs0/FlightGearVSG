@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef FG_FLIGHTPLAN_UNIT_TESTS_HXX
-#define FG_FLIGHTPLAN_UNIT_TESTS_HXX
-
+#pragma once
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -105,5 +102,3 @@ public:
     void testLoadSaveBetweenRestriction();
     void testRestrictionUnits();
 };
-
-#endif  // FG_FLIGHTPLAN_UNIT_TESTS_HXX

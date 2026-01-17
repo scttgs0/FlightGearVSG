@@ -42,8 +42,7 @@
 using std::string;
 using std::vector;
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 const char * PROPERTY_ROOT = "/sim/http";
 
@@ -652,5 +651,4 @@ FGHttpd * FGHttpd::createInstance(SGPropertyNode_ptr configNode)
 SGSubsystemMgr::Registrant<MongooseHttpd> registrantMongooseHttpd;
 #endif
 
-} // namespace http
-} // namespace flightgear
+} // namespace flightgear::http

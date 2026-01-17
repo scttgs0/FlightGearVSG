@@ -15,8 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef JSONUTILS_H
-#define JSONUTILS_H
+#pragma once
 
 #include <QRect>
 #include <QJsonArray>
@@ -24,5 +23,3 @@
 QJsonArray rectToJsonArray(const QRect& r);
 
 QRect jsonArrayToRect(QJsonArray a);
-
-#endif // JSONUTILS_H

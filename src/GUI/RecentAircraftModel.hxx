@@ -1,5 +1,4 @@
-#ifndef RECENTAIRCRAFTMODEL_HXX
-#define RECENTAIRCRAFTMODEL_HXX
+#pragma once
 
 #include <QAbstractListModel>
 #include <QUrl>
@@ -40,5 +39,3 @@ private:
     AircraftItemModel* m_aircraftModel;
     QList<QUrl> m_data;
 };
-
-#endif // RECENTAIRCRAFTMODEL_HXX

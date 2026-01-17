@@ -1,5 +1,4 @@
-#ifndef FGEVENTHANDLER_H
-#define FGEVENTHANDLER_H 1
+#pragma once
 
 #include <map>
 #include <osg/Quat>
@@ -150,4 +149,3 @@ private:
 
 bool eventToWindowCoords(const osgGA::GUIEventAdapter* ea, double& x, double& y);
 }
-#endif

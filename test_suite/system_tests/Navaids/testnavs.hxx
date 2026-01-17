@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_NAVAIDS_SYSTEM_TESTS_HXX
-#define _FG_NAVAIDS_SYSTEM_TESTS_HXX
-
+#pragma once
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -44,5 +41,3 @@ public:
     // The tests.
     void testNavs();
 };
-
-#endif  // _FG_NAVAIDS_SYSTEM_TESTS_HXX

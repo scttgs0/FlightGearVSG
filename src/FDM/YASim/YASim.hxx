@@ -1,5 +1,4 @@
-#ifndef _YASIM_HXX
-#define _YASIM_HXX
+#pragma once
 
 #include <FDM/flight.hxx>
 #include <vector>
@@ -64,5 +63,3 @@ private:
     SGPropertyNode_ptr _launchbar_state, _launchbar_strop;
     std::vector<GearProps> _gearProps;
 };
-
-#endif // _YASIM_HXX

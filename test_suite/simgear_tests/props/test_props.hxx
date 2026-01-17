@@ -17,10 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_SIMGEAR_PROPS_SIMGEAR_UNIT_TESTS_HXX
-#define _FG_SIMGEAR_PROPS_SIMGEAR_UNIT_TESTS_HXX
-
+#pragma once
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>
@@ -54,5 +51,3 @@ private:
     // A property tree.
     SGPropertyNode *tree;
 };
-
-#endif  // _FG_SIMGEAR_PROPS_SIMGEAR_UNIT_TESTS_HXX

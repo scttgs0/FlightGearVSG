@@ -1,5 +1,4 @@
-#ifndef _HITCH_HPP
-#define _HITCH_HPP
+#pragma once
 
 #include <string>
 
@@ -118,4 +117,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _HITCH_HPP

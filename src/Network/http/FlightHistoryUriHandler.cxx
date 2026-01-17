@@ -30,8 +30,7 @@
 using std::string;
 using std::stringstream;
 
-namespace flightgear {
-namespace http {
+namespace flightgear::http {
 
 /*
 {
@@ -260,6 +259,4 @@ bool FlightHistoryUriHandler::handleRequest(const HTTPRequest& request,
 	return true;
 }
 
-} // namespace http
-} // namespace flightgear
-
+} // namespace flightgear::http

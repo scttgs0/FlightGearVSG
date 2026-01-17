@@ -1,8 +1,7 @@
 // SPDX-FileCopyrightText: 2015 James Turner
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifndef FG_GUI_AIRCRAFT_MODEL
-#define FG_GUI_AIRCRAFT_MODEL
+#pragma once
 
 #include <QAbstractListModel>
 #include <QDir>
@@ -145,5 +144,3 @@ private:
     int m_cachedLocalAircraftCount = 0;
 
 };
-
-#endif // of FG_GUI_AIRCRAFT_MODEL

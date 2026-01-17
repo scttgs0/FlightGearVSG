@@ -15,8 +15,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-#ifndef _AIBVHPAGER_HXX
-#define _AIBVHPAGER_HXX
+#pragma once
 
 #include <string>
 #include <simgear/bvh/BVHNode.hxx>
@@ -45,5 +44,3 @@ private:
 };
 
 } // namespace fgai
-
-#endif

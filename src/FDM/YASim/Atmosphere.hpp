@@ -1,5 +1,4 @@
-#ifndef _ATMOSPHERE_HPP
-#define _ATMOSPHERE_HPP
+#pragma once
 
 namespace FGTestApi { namespace PrivateAccessor { namespace FDM { class Accessor; } } }
 
@@ -66,4 +65,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _ATMOSPHERE_HPP

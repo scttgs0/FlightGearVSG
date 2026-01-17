@@ -19,9 +19,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-
-#ifndef _ACMS_HXX
-#define _ACMS_HXX
+#pragma once
 
 #include <simgear/props/props.hxx>
 
@@ -47,5 +45,3 @@ private:
     SGPropertyNode_ptr _acc_lat, _acc_lon, _acc_down;
     SGPropertyNode_ptr _temp, _wow;
 };
-
-#endif // _ACMS_HXX

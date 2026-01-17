@@ -17,13 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef _FG_TEST_RUNNER_HXX
-#define _FG_TEST_RUNNER_HXX
-
+#pragma once
 
 // Execute all test suites for the given test category.
 int testRunner(const std::string&, const std::string&, char*, bool, bool, bool, bool);
-
-
-#endif  // _FG_TEST_RUNNER_HXX

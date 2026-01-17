@@ -1,5 +1,4 @@
-#ifndef _VECTOR_HPP
-#define _VECTOR_HPP
+#pragma once
 
 #include <cassert>
 
@@ -80,4 +79,3 @@ inline void Vector::realloc()
     _array = array;
 }
 }; //namespace yasim
-#endif // _VECTOR_HPP

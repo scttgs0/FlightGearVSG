@@ -17,9 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-
-#ifndef FG_GUI_MOUSE_CURSOR_HXX
-#define FG_GUI_MOUSE_CURSOR_HXX 1
+#pragma once
 
 class SGPropertyNode;
 
@@ -74,5 +72,3 @@ protected:
 
     Cursor m_currentCursor = CURSOR_ARROW;
 };
-
-#endif // FG_GUI_MOUSE_CURSOR_HXX

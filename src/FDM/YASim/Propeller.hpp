@@ -1,5 +1,4 @@
-#ifndef _PROPELLER_HPP
-#define _PROPELLER_HPP
+#pragma once
 
 namespace yasim {
 
@@ -49,4 +48,3 @@ private:
 };
 
 }; // namespace yasim
-#endif // _PROPELLER_HPP

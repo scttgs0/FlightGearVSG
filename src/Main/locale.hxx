@@ -6,8 +6,7 @@
  * @brief FlightGear Localization Support
  */
 
-#ifndef __FGLOCALE_HXX
-#define __FGLOCALE_HXX
+#pragma once
 
 #include <cstdarg> // for va_start/_end
 #include <memory>
@@ -364,6 +363,3 @@ private:
 
 std::string fgTrMsg(const char* key);
 std::string fgTrPrintfMsg(const char* key, ...);
-
-
-#endif // __FGLOCALE_HXX

@@ -20,10 +20,7 @@
 
 #include "PolyLine.hxx"
 
-namespace flightgear
-{
-
-namespace Octree
+namespace flightgear::Octree
 {
 
 static std::unique_ptr<Node> global_spatialOctree;
@@ -399,6 +396,4 @@ bool findAllWithinRange(const SGVec3d& aPos, double aRangeM, FGPositioned::Filte
   return !pq.empty();
 }
 
-} // of namespace Octree
-
-} // of namespace flightgear
+} // of namespace flightgear::Octree

@@ -21,8 +21,7 @@
 //
 // $Id$
 
-#ifndef _FG_AEROMESH_HXX
-#define _FG_AEROMESH_HXX
+#pragma once
 
 #include "WakeMesh.hxx"
 
@@ -46,5 +45,3 @@ private:
 };
 
 typedef SGSharedPtr<AircraftMesh> AircraftMesh_ptr;
-
-#endif

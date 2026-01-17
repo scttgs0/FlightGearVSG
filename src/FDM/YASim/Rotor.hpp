@@ -1,5 +1,4 @@
-#ifndef _ROTOR_HPP
-#define _ROTOR_HPP
+#pragma once
 
 #include "Vector.hpp"
 #include "Rotorpart.hpp"
@@ -289,4 +288,3 @@ public:
 };
 
 }; // namespace yasim
-#endif // _ROTOR_HPP

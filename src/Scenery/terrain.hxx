@@ -20,10 +20,7 @@
 //
 // $Id$
 
-
-#ifndef _TERRAIN_HXX
-#define _TERRAIN_HXX
-
+#pragma once
 
 #ifndef __cplusplus                                                          
 # error This library requires C++
@@ -108,5 +105,3 @@ public:
     virtual bool schedule_scenery(const SGGeod& position, double range_m, double duration=0.0) = 0;
     virtual void materialLibChanged() = 0;
 };
-
-#endif // _TERRAIN_HXX

@@ -1,5 +1,4 @@
-#ifndef FG_FGCOM_HXX
-#define FG_FGCOM_HXX
+#pragma once
 
 // fgcom.hxx -- FGCom: Voice communication
 //
@@ -102,7 +101,3 @@ private:
     void connectToCommFrequency();
     void testMode(bool testMode);
 };
-
-#endif // of FG_FGCOM_HXX
-
-

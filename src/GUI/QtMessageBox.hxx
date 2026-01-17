@@ -1,3 +1,5 @@
+#pragma once
+
 flightgear::MessageBoxResult
 QtMessageBox(const std::string& caption,
                     const std::string& msg,

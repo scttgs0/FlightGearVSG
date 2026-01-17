@@ -23,10 +23,7 @@
 //
 // $Id$
 
-
-#ifndef _VIEWER_HXX
-#define _VIEWER_HXX
-
+#pragma once
 
 #include <simgear/compiler.h>
 #include <simgear/constants.h>
@@ -455,5 +452,3 @@ private:
 }; // of class View
 
 } // of namespace flightgear
-
-#endif // _VIEWER_HXX

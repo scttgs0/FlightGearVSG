@@ -16,13 +16,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-#ifndef QTGUI_HELPERS_H
-#define QTGUI_HELPERS_H
+#pragma once
 
 #include <QDebug>
 
 class SGPath;
 
 QDebug operator<<(QDebug debug, const SGPath& c);
-
-#endif // QTGUI_HELPERS_H

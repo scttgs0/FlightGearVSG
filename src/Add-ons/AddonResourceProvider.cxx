@@ -30,10 +30,7 @@ namespace strutils = simgear::strutils;
 
 using std::string;
 
-namespace flightgear
-{
-
-namespace addons
+namespace flightgear::addons
 {
 
 ResourceProvider::ResourceProvider()
@@ -73,6 +70,4 @@ ResourceProvider::resolve(const string& resource, SGPath& context) const
   return SGPath(candidate).validate(/* write */ false);
 }
 
-} // of namespace addons
-
-} // of namespace flightgear
+} // of namespace flightgear::addons

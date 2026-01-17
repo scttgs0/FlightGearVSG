@@ -20,8 +20,7 @@
 //
 // $Id$
 
-#ifndef _FG_FLARM_HXX
-#define _FG_FLARM_HXX
+#pragma once
 
 #include "garmin.hxx"
 
@@ -54,5 +53,3 @@ public:
 
     virtual bool gen_message();
 };
-
-#endif // _FG_FLARM_HXX

@@ -1,5 +1,4 @@
-#ifndef THUMBNAILIMAGEITEM_HXX
-#define THUMBNAILIMAGEITEM_HXX
+#pragma once
 
 #include <memory>
 
@@ -59,5 +58,3 @@ private:
     QImage m_image;
     QSize m_maximumSize;
 };
-
-#endif // THUMBNAILIMAGEITEM_HXX
