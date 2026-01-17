@@ -21,10 +21,6 @@ function(setup_fgfs_libraries target)
         target_link_libraries(${target} PRIVATE ${X11_LIBRARIES})
     endif()
 
-    if(ENABLE_OSGXR)
-        target_link_libraries(${target} PRIVATE osgXR)
-    endif()
-
     target_link_libraries(${target} PRIVATE fgsqlite3 fgvoicesynth fgembeddedresources)
 
     target_link_libraries(${target} PRIVATE

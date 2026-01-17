@@ -15,7 +15,6 @@
 #include "WindowSystemAdapter.hxx"
 #include "splash.hxx"
 #include "sview.hxx"
-#include "VRManager.hxx"
 
 #include <simgear/math/SGRect.hxx>
 #include <simgear/props/props.hxx>
@@ -727,51 +726,6 @@ void CameraGroup::buildGUICamera(SGPropertyNode* cameraNode,
 Compositor *CameraGroup::buildVRMirrorCompositor(osg::GraphicsContext* gc,
                                                  osg::Viewport *viewport)
 {
-#ifdef ENABLE_OSGXR
-    if (VRManager::instance()->getUseMirror()) {
-        Camera* camera = new Camera;
-        camera->setName("VRMirror");
-        camera->setAllowEventFocus(false);
-        camera->setGraphicsContext(gc);
-        camera->setViewport(viewport);
-        camera->setClearMask(0);
-        camera->setInheritanceMask(CullSettings::ALL_VARIABLES
-                                   & ~(CullSettings::COMPUTE_NEAR_FAR_MODE
-                                       | CullSettings::CULLING_MODE
-                                       | CullSettings::CLEAR_MASK
-                                       ));
-        camera->setComputeNearFarMode(CullSettings::DO_NOT_COMPUTE_NEAR_FAR);
-        camera->setCullingMode(CullSettings::NO_CULLING);
-        camera->setProjectionResizePolicy(Camera::FIXED);
-
-        // OSG is buggy and treats draw buffer target as separate from FBO
-        // state. Be explicit about drawing to back buffer to reduce chance of
-        // inheriting a GL_NONE, which is particularly likely with single target
-        // CSM passes and stereo.
-        camera->setDrawBuffer(GL_BACK);
-        camera->setReadBuffer(GL_BACK);
-
-        // The camera group will always update the camera
-        camera->setReferenceFrame(Transform::ABSOLUTE_RF);
-
-        // Mirror camera needs to be drawn after VR cameras and before GUI
-        camera->setRenderOrder(Camera::POST_RENDER, 9000);
-
-        // Let osgXR do the mirror camera setup
-        VRManager::instance()->setupMirrorCamera(camera);
-
-        Pass *pass = new Pass;
-        pass->camera = camera;
-        pass->useMastersSceneData = false;
-
-        // We just build a simple Compositor directly from C++ space that
-        // encapsulates a single osg::Camera.
-        Compositor *compositor = new Compositor(_viewer, gc, viewport);
-        compositor->addPass(pass);
-
-        return compositor;
-    }
-#endif
     return nullptr;
 }
 

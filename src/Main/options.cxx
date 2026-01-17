@@ -2122,11 +2122,6 @@ const std::initializer_list<OptionDesc> fgOptionArray = {
     {"texture-cache",                    ParamType::VAL_BOOL, OptionType::OPT_BOOL,   "/sim/rendering/texture-cache/cache-enabled", true,  "", nullptr },
     {"enable-texture-cache",             ParamType::NONE,     OptionType::OPT_BOOL,   "/sim/rendering/texture-cache/cache-enabled", true,  "", nullptr },
     {"disable-texture-cache",            ParamType::NONE,     OptionType::OPT_BOOL,   "/sim/rendering/texture-cache/cache-enabled", false, "", nullptr },
-#ifdef ENABLE_OSGXR
-    {"vr",                               ParamType::VAL_BOOL, OptionType::OPT_BOOL,   "/sim/vr/enabled", true,  "", nullptr },
-    {"disable-vr",                       ParamType::NONE,     OptionType::OPT_BOOL,   "/sim/vr/enabled", false, "", nullptr },
-    {"enable-vr",                        ParamType::NONE,     OptionType::OPT_BOOL,   "/sim/vr/enabled", true,  "", nullptr },
-#endif
     {"wireframe",                        ParamType::VAL_BOOL, OptionType::OPT_BOOL,   "/sim/rendering/wireframe", true,  "", nullptr },
     {"disable-wireframe",                ParamType::NONE,     OptionType::OPT_BOOL,   "/sim/rendering/wireframe", false, "", nullptr },
     {"enable-wireframe",                 ParamType::NONE,     OptionType::OPT_BOOL,   "/sim/rendering/wireframe", true,  "", nullptr },

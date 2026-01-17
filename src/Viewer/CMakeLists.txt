@@ -29,13 +29,6 @@ set(HEADERS
 	viewmgr.hxx
 	sview.hxx
 	GraphicsPresets.hxx
-	VRManager.hxx
 	)
-
-if (ENABLE_OSGXR)
-	list(APPEND SOURCES
-		VRManager.cxx
-		)
-endif()
 
 flightgear_component(Viewer "${SOURCES}" "${HEADERS}")

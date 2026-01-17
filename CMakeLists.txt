@@ -124,7 +124,6 @@ IF(APPLE)
     add_compile_definitions(GL_SILENCE_DEPRECATION)
 elseif(WIN32)
     set(EVENT_INPUT_DEFAULT 1)
-    set(ENABLE_VR_DEFAULT 1)
     list(APPEND PLATFORM_LIBS "Shlwapi.lib" "Version.lib")
 
     set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION "bin")
@@ -138,7 +137,6 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux" OR
     find_package(X11 REQUIRED)
 
     set(USE_DBUS_DEFAULT 1)
-    set(ENABLE_VR_DEFAULT 1)
 
     find_package(UDev QUIET)
     if(UDEV_FOUND)
@@ -182,13 +180,6 @@ find_package(vsgXchange 1.1.9 QUIET)
 # find the optional vsgImGui that can be used for GUI elements added into graphics windows.
 find_package(vsgImGui QUIET)
 
-if (ENABLE_VR_DEFAULT)
-    find_package(osgXR 0.5.5 QUIET)
-    if (osgXR_FOUND)
-        set(SYSTEM_OSGXR_DEFAULT 1)
-    endif()
-endif()
-
 # FlightGear build options
 option(LOGGING           "Set to ON to build FlightGear with logging support (default)" ON)
 option(JSBSIM_TERRAIN    "Set to ON to build FlightGear with JSBSim terrain handling code" ON)
@@ -201,7 +192,6 @@ option(SYSTEM_SQLITE     "Set to ON to build FlightGear with the system's SQLite
 option(ENABLE_IAX        "Set to ON to build FlightGear with IAXClient/fgcom built-in (default)" ON)
 option(USE_DBUS          "Set to ON to build FlightGear with DBus screensaver interaction (default on Linux)" ${USE_DBUS_DEFAULT})
 option(ENABLE_VR         "Set to ON to build Flightgear with VR support" ${ENABLE_VR_DEFAULT})
-option(SYSTEM_OSGXR      "Set to ON to build Flightgear with the system's osgXR library" ${SYSTEM_OSGXR_DEFAULT})
 option(SYSTEM_SPEEX      "Set to ON to build IAXClient with the system's speex and speexdsp library" ${SYSTEM_SPEEX_DEFAULT})
 option(SYSTEM_GSM        "Set to ON to build IAXClient with the system's GSM library" ${SYSTEM_GSM_DEFAULT})
 option(SYSTEM_FLITE      "Set to ON to build Flightgear with the system's Flite library" ${SYSTEM_FLITE_DEFAULT})
@@ -354,30 +344,6 @@ endif (SYSTEM_SQLITE)
 if (USE_DBUS)
     find_package(DBus)
 endif (USE_DBUS)
-
-##############################################################################
-## VR setup
-if (ENABLE_VR)
-    if (SYSTEM_OSGXR AND osgXR_FOUND)
-        message(STATUS "VR support enabled, using system osgXR library")
-        add_library(osgXR ALIAS osgXR::osgXR)
-        set(ENABLE_OSGXR 1)
-        set(ENABLE_SYSTEM_OSGXR 1)
-    else()
-        find_package(OpenXR QUIET)
-        if (OpenXR_FOUND)
-            message(STATUS "VR support enabled, using built-in osgXR library")
-            set(ENABLE_OSGXR 1)
-            set(ENABLE_SYSTEM_OSGXR 0)
-        else()
-            message(STATUS "VR support disabled, OpenXR not found")
-            set(ENABLE_OSGXR 0)
-        endif()
-    endif()
-else()
-    message(STATUS "VR support disabled")
-    set(ENABLE_OSGXR 0)
-endif()
 
 ##############################################################################
 ## Qt5 setup setup

@@ -30,11 +30,6 @@
 #include <osg/Group>
 #include <osgText/Text>
 
-#ifdef ENABLE_OSGXR
-#include <osgXR/CompositionLayerQuad>
-#include <osgXR/Swapchain>
-#endif
-
 #include <simgear/props/props.hxx>
 #include <simgear/timing/timestamp.hxx>
 
@@ -127,12 +122,6 @@ private:
 
      std::vector<ImageItem> _imageItems;
 
-#ifdef ENABLE_OSGXR
-    // Splash as OpenXR composition layer
-    osg::ref_ptr<osgXR::Swapchain> _splashSwapchain;
-    osg::ref_ptr<osgXR::CompositionLayerQuad> _splashLayer;
-#endif
-
     std::vector<TextItem> _items;
     
     SGTimeStamp _splashStartTime;
@@ -145,5 +134,3 @@ private:
 void fgSplashProgress ( const char *identifier, unsigned int percent = 0 );
 
 #endif // _SPLASH_HXX
-
-

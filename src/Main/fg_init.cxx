@@ -123,7 +123,6 @@
 #include <Viewer/CameraGroup.hxx>
 #include <Viewer/FGEventHandler.hxx>
 #include <Viewer/GraphicsPresets.hxx>
-#include <Viewer/VRManager.hxx>
 #include <Viewer/renderer.hxx>
 #include <Viewer/splash.hxx>
 #include <Viewer/viewmgr.hxx>
@@ -1330,9 +1329,6 @@ void fgStartNewReset()
     subsystemManger->remove("nasal");
 
     subsystemManger->shutdown();
-#ifdef ENABLE_OSGXR
-    flightgear::VRManager::destroyInstance();
-#endif
     subsystemManger->unbind();
 
     // remove most subsystems, with a few exceptions.
@@ -1471,12 +1467,6 @@ void fgStartNewReset()
 
     flightgear::CameraGroup::buildDefaultGroup(composite_viewer_view);
     osg::GraphicsContext::createNewContextID();
-
-#ifdef ENABLE_OSGXR
-    // After buildDefaultGroup (which puts used graphics contexts into viewer)
-    // Before threading re-enabled
-    flightgear::VRManager::instance()->reset();
-#endif
 
     render->setView(composite_viewer_view);
     render->postinit();

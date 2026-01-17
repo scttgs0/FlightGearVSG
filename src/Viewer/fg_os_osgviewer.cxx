@@ -36,7 +36,6 @@
 
 #include "CameraGroup.hxx"
 #include "FGEventHandler.hxx"
-#include "VRManager.hxx"
 #include "WindowBuilder.hxx"
 #include "WindowSystemAdapter.hxx"
 #include "renderer.hxx"
@@ -169,12 +168,6 @@ void fgOSResetProperties()
     }
 
     fgTie("/sim/rendering/database-pager/threads", &getNumDatabaseThreads, &setNumDatabaseThreads);
-
-#ifdef ENABLE_OSGXR
-    fgSetBool("/sim/vr/built", true);
-#else
-    fgSetBool("/sim/vr/built", false);
-#endif
 }
 
 
@@ -336,9 +329,6 @@ int fgOSMainLoop()
             }
         }
         globals->get_renderer()->update();
-#ifdef ENABLE_OSGXR
-        VRManager::instance()->update();
-#endif
         viewer_base->frame(globals->get_sim_time_sec());
     }
 

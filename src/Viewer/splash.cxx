@@ -34,7 +34,6 @@
 #include <simgear/scene/util/OsgUtils.hxx>
 #include <simgear/props/condition.hxx>
 
-#include "VRManager.hxx"
 #include "renderer.hxx"
 #include "splash.hxx"
 #include <Main/fg_os.hxx>
@@ -65,19 +64,6 @@ public:
 SplashScreen::SplashScreen() :
     _splashAlphaNode(fgGetNode("/sim/startup/splash-alpha", true))
 {
-#ifdef ENABLE_OSGXR
-    uint32_t splashW = 1920, splashH = 1080;
-    float aspect = (float)splashW / splashH;
-    _splashSwapchain = new osgXR::Swapchain(splashW, splashH);
-    _splashSwapchain->setAlphaBits(8);
-    _splashSwapchain->allowRGBEncoding(osgXR::Swapchain::Encoding::ENCODING_SRGB);
-    _splashLayer = new osgXR::CompositionLayerQuad(flightgear::VRManager::instance());
-    _splashLayer->setSubImage(_splashSwapchain);
-    _splashLayer->setSize(osg::Vec2f(aspect, 1.0f));
-    _splashLayer->setPosition(osg::Vec3f(0, 0, -2.0f));
-    _splashLayer->setAlphaMode(osgXR::CompositionLayer::BLEND_ALPHA_UNPREMULT);
-#endif
-
     const std::string vertex_source =
         "#version 330 core\n"
         "\n"
@@ -309,9 +295,6 @@ void SplashScreen::createNodes()
     geode = new osg::Geode;
     geode->addDrawable(geometry);
 
-#ifdef ENABLE_OSGXR
-    _splashSwapchain->attachToMirror(stateSet);
-#endif
     _splashQuadCamera->addChild(geode);
     addChild(_splashQuadCamera);
 }
@@ -393,9 +376,6 @@ osg::ref_ptr<osg::Camera> SplashScreen::createFBOCamera()
     c->setRenderTargetImplementation( osg::Camera::FRAME_BUFFER_OBJECT );
     c->setRenderOrder(osg::Camera::PRE_RENDER);
     c->attach(osg::Camera::COLOR_BUFFER, _splashFBOTexture);
-#ifdef ENABLE_OSGXR
-    _splashSwapchain->attachToCamera(c);
-#endif
 
     osg::StateSet* stateSet = c->getOrCreateStateSet();
     stateSet->setMode(GL_CULL_FACE, osg::StateAttribute::OFF);
@@ -662,18 +642,11 @@ void SplashScreen::doUpdate()
         removeChild(0, getNumChildren());
         _splashFBOCamera = nullptr;
         _splashQuadCamera = nullptr;
-#ifdef ENABLE_OSGXR
-        _splashLayer->setVisible(false);
-#endif
     } else if (getNumChildren() == 0) {
         createNodes();
         _splashStartTime.stamp();
         resize(fgGetInt("/sim/startup/xsize"),
                fgGetInt("/sim/startup/ysize"));
-#ifdef ENABLE_OSGXR
-        _splashLayer->setVisible(true);
-        _splashSwapchain->setForcedAlpha(alpha);
-#endif
     } else {
         (*_splashFSQuadColor)[0] = osg::Vec4(1.0, 1.0, 1.0, _splashAlphaNode->getFloatValue());
         _splashFSQuadColor->dirty();
@@ -702,9 +675,6 @@ void SplashScreen::doUpdate()
         }
         updateSplashSpinner();
         updateTipText();
-#ifdef ENABLE_OSGXR
-        _splashSwapchain->setForcedAlpha(alpha);
-#endif
     }
 }
 
@@ -794,11 +764,6 @@ void SplashScreen::resize( int width, int height )
     _splashFBOCamera->setViewport(0, 0, width, height);
     _splashFBOCamera->setProjectionMatrixAsOrtho2D(-width * 0.5, width * 0.5,
                                                    -height * 0.5, height * 0.5);
-#ifdef ENABLE_OSGXR
-    float aspect = (float)width / height;
-    _splashSwapchain->setSize(width, height);
-    _splashLayer->setSize(osg::Vec2f(aspect, 1.0f));
-#endif
 
     const double screenAspectRatio = static_cast<double>(width) / height;
 
