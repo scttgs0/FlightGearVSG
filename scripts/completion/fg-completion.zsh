@@ -14,9 +14,9 @@ _fgfs_options=(
 	'--adf1=[Set the ADF1 radio frequency, optionally preceded by a card rotation]' \
 	'--adf2=[Set the ADF2 radio frequency, optionally preceded by a card rotation]' \
 	'--aero=[Select aircraft aerodynamics model to load]' \
-	'--ai-models[Enable/disable the artifical traffic subsystem]:Boolean values:(true false 1 0 yes no)' \
-		'--disable-ai-models[Disable the artifical traffic subsystem]' \
-		'--enable-ai-models[Enable the artifical traffic]' \
+	'--ai-models[Enable/disable the artificial traffic subsystem]:Boolean values:(true false 1 0 yes no)' \
+		'--disable-ai-models[Disable the artificial traffic subsystem]' \
+		'--enable-ai-models[Enable the artificial traffic]' \
 	'--aircraft=[Select an aircraft profile]:Aircraft:->aircraft' \
 	'--vehicle=[Select an aircraft profile]:Aircraft:->vehicle' \
 	'--aircraft-dir=[Aircraft directory relative to the path of the executable]:Aircraft directory:_directories' \
@@ -152,7 +152,7 @@ _fgfs_options=(
 	'--lod-texturing=[Specify the method of texturing the terrain]:LOD texturing:(bluemarble raster debug)' \
 	'--log-class=[Specify which logging class(es) to use]:Log class:(none ai aircraft astro atc autopilot clipper cockpit environment event flight general gl gui headless input instrumentation io math nasal navaid network osg particles sound systems terrain terrasync undefined view all)' \
 	'--log-dir=[Save the logs in the given directory]:Directories:_directories' \
-	'--log-level=[Specify which loggin level to use]:Log level:(bulk debug info warn alert)' \
+	'--log-level=[Specify which logging level to use]:Log level:(bulk debug info warn alert)' \
 	'--mach=[Specify initial mach number]' \
 	'--materials-file=[Specify the materials file used to render the scenery]' \
 	'--max-fps=[Maximum frame rate in Hz]' \
@@ -193,8 +193,8 @@ _fgfs_options=(
 	'--read-only[Enable/disable folder $FG_HOME read-only]:Boolean values:(true false 1 0 yes no)' \
 		'--enable-read-only[Enable folder $FG_HOME read-only]' \
 		'--disable-read-only[Disable folder $FG_HOME read-only]' \
-	'--real-weather-fetch[Enable/disbale METAR based real weather fetching]:Boolean values:(true false 1 0 yes no)' \
-		'--disable-real-weather-fetch[Disbale METAR based real weather fetching]' \
+	'--real-weather-fetch[Enable/disable METAR based real weather fetching]:Boolean values:(true false 1 0 yes no)' \
+		'--disable-real-weather-fetch[Disable METAR based real weather fetching]' \
 		'--enable-real-weather-fetch[Enable METAR based real weather fetching]' \
 	'--restart-launcher[Enable/Disable automatic opening of the Launcher when exiting FlightGear]:Boolean values:(true false 1 0 yes no)' \
 		'--enable-restart-launcher[Enable automatic opening of the Launcher when exiting FlightGear]' \
@@ -404,5 +404,3 @@ case $state in
 	fix)
 	;;
 esac
-
-
